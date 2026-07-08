@@ -26,7 +26,7 @@ export function usePagination({
   // utils identicators
   const hasNext = page < lastPage;
   const hasPrevious = page > firstPage;
-  const startIndex = (firstPage - 1) * perPage + 1;
+  const startIndex = (page - 1) * perPage + 1;
   const endIndex = Math.min(startIndex + perPage, total);
 
   const nextFunction = useCallback(() => {

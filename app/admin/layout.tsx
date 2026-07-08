@@ -18,7 +18,8 @@ import {
   ModalRoot,
 } from "@/components/molecules/modal/ModalRoot";
 import { MessagePopupModal } from "@/components/molecules/modal/MessagePopupModal";
-import { ProgramForm } from "@/features/programs/components/ProgramForm";
+import { ProgramForm } from "@/features/programs";
+import { CreateWaveForm } from "@/features/wave";
 
 export type NavLink = {
   name: string;
@@ -28,6 +29,7 @@ export type NavLink = {
 
 const modalContent: ModalContentType = {
   program: ProgramForm,
+  createWave: CreateWaveForm,
   messagePopup: MessagePopupModal,
 };
 

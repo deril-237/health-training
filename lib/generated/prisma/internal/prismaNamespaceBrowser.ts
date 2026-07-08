@@ -89,8 +89,8 @@ export const TrainingScalarFieldEnum = {
   name: 'name',
   description: 'description',
   objective: 'objective',
-  price: 'price',
   image: 'image',
+  price: 'price',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
@@ -129,7 +129,7 @@ export const WaveScalarFieldEnum = {
   quota: 'quota',
   status: 'status',
   price: 'price',
-  numberWave: 'numberWave'
+  trainingProgramId: 'trainingProgramId'
 } as const
 
 export type WaveScalarFieldEnum = (typeof WaveScalarFieldEnum)[keyof typeof WaveScalarFieldEnum]

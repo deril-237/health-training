@@ -15,6 +15,7 @@ import zod from "zod";
 import { PaginatedResult, PaginationParams } from "@/lib/pagination";
 import { Program } from "./types";
 import { toValidationErrorResponse } from "@/lib/errors/toValidationErrorResponse";
+import { Identifier } from "@/interfaces/entities";
 
 export const createProgramAction: ServerAction<
   [FormData],
@@ -42,7 +43,7 @@ export const createProgramAction: ServerAction<
 };
 
 export const updateProgramAction: ServerAction<[string, FormData]> = async (
-  programId: string,
+  programId: Identifier,
   formData: FormData,
 ) => {
   const programData = await validateData({

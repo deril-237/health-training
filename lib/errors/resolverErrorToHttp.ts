@@ -55,7 +55,7 @@ export function resolverErrorToHttp<T extends {} = {}>(
     return responseHelper.error({
       statusCode: 409,
       error: {
-        global: "Conflict",
+        global: error.global,
         fieldsErrors: error.fieldError as Record<string, string>,
       },
     });

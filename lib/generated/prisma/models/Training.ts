@@ -39,8 +39,8 @@ export type TrainingMinAggregateOutputType = {
   name: string | null
   description: string | null
   objective: string | null
-  price: number | null
   image: string | null
+  price: number | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -50,8 +50,8 @@ export type TrainingMaxAggregateOutputType = {
   name: string | null
   description: string | null
   objective: string | null
-  price: number | null
   image: string | null
+  price: number | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -61,8 +61,8 @@ export type TrainingCountAggregateOutputType = {
   name: number
   description: number
   objective: number
-  price: number
   image: number
+  price: number
   createdAt: number
   updatedAt: number
   _all: number
@@ -82,8 +82,8 @@ export type TrainingMinAggregateInputType = {
   name?: true
   description?: true
   objective?: true
-  price?: true
   image?: true
+  price?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -93,8 +93,8 @@ export type TrainingMaxAggregateInputType = {
   name?: true
   description?: true
   objective?: true
-  price?: true
   image?: true
+  price?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -104,8 +104,8 @@ export type TrainingCountAggregateInputType = {
   name?: true
   description?: true
   objective?: true
-  price?: true
   image?: true
+  price?: true
   createdAt?: true
   updatedAt?: true
   _all?: true
@@ -202,8 +202,8 @@ export type TrainingGroupByOutputType = {
   name: string
   description: string
   objective: string
-  price: number
   image: string | null
+  price: number
   createdAt: Date
   updatedAt: Date
   _count: TrainingCountAggregateOutputType | null
@@ -236,8 +236,8 @@ export type TrainingWhereInput = {
   name?: Prisma.StringFilter<"Training"> | string
   description?: Prisma.StringFilter<"Training"> | string
   objective?: Prisma.StringFilter<"Training"> | string
-  price?: Prisma.FloatFilter<"Training"> | number
   image?: Prisma.StringNullableFilter<"Training"> | string | null
+  price?: Prisma.FloatFilter<"Training"> | number
   createdAt?: Prisma.DateTimeFilter<"Training"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Training"> | Date | string
   trainingPrograms?: Prisma.TrainingProgramListRelationFilter
@@ -248,8 +248,8 @@ export type TrainingOrderByWithRelationInput = {
   name?: Prisma.SortOrder
   description?: Prisma.SortOrder
   objective?: Prisma.SortOrder
-  price?: Prisma.SortOrder
   image?: Prisma.SortOrderInput | Prisma.SortOrder
+  price?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   trainingPrograms?: Prisma.TrainingProgramOrderByRelationAggregateInput
@@ -263,8 +263,8 @@ export type TrainingWhereUniqueInput = Prisma.AtLeast<{
   NOT?: Prisma.TrainingWhereInput | Prisma.TrainingWhereInput[]
   description?: Prisma.StringFilter<"Training"> | string
   objective?: Prisma.StringFilter<"Training"> | string
-  price?: Prisma.FloatFilter<"Training"> | number
   image?: Prisma.StringNullableFilter<"Training"> | string | null
+  price?: Prisma.FloatFilter<"Training"> | number
   createdAt?: Prisma.DateTimeFilter<"Training"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Training"> | Date | string
   trainingPrograms?: Prisma.TrainingProgramListRelationFilter
@@ -275,8 +275,8 @@ export type TrainingOrderByWithAggregationInput = {
   name?: Prisma.SortOrder
   description?: Prisma.SortOrder
   objective?: Prisma.SortOrder
-  price?: Prisma.SortOrder
   image?: Prisma.SortOrderInput | Prisma.SortOrder
+  price?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   _count?: Prisma.TrainingCountOrderByAggregateInput
@@ -294,8 +294,8 @@ export type TrainingScalarWhereWithAggregatesInput = {
   name?: Prisma.StringWithAggregatesFilter<"Training"> | string
   description?: Prisma.StringWithAggregatesFilter<"Training"> | string
   objective?: Prisma.StringWithAggregatesFilter<"Training"> | string
-  price?: Prisma.FloatWithAggregatesFilter<"Training"> | number
   image?: Prisma.StringNullableWithAggregatesFilter<"Training"> | string | null
+  price?: Prisma.FloatWithAggregatesFilter<"Training"> | number
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Training"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Training"> | Date | string
 }
@@ -305,8 +305,8 @@ export type TrainingCreateInput = {
   name: string
   description: string
   objective: string
-  price: number
   image?: string | null
+  price: number
   createdAt?: Date | string
   updatedAt?: Date | string
   trainingPrograms?: Prisma.TrainingProgramCreateNestedManyWithoutTrainingInput
@@ -317,8 +317,8 @@ export type TrainingUncheckedCreateInput = {
   name: string
   description: string
   objective: string
-  price: number
   image?: string | null
+  price: number
   createdAt?: Date | string
   updatedAt?: Date | string
   trainingPrograms?: Prisma.TrainingProgramUncheckedCreateNestedManyWithoutTrainingInput
@@ -329,8 +329,8 @@ export type TrainingUpdateInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   objective?: Prisma.StringFieldUpdateOperationsInput | string
-  price?: Prisma.FloatFieldUpdateOperationsInput | number
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  price?: Prisma.FloatFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   trainingPrograms?: Prisma.TrainingProgramUpdateManyWithoutTrainingNestedInput
@@ -341,8 +341,8 @@ export type TrainingUncheckedUpdateInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   objective?: Prisma.StringFieldUpdateOperationsInput | string
-  price?: Prisma.FloatFieldUpdateOperationsInput | number
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  price?: Prisma.FloatFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   trainingPrograms?: Prisma.TrainingProgramUncheckedUpdateManyWithoutTrainingNestedInput
@@ -353,8 +353,8 @@ export type TrainingCreateManyInput = {
   name: string
   description: string
   objective: string
-  price: number
   image?: string | null
+  price: number
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -364,8 +364,8 @@ export type TrainingUpdateManyMutationInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   objective?: Prisma.StringFieldUpdateOperationsInput | string
-  price?: Prisma.FloatFieldUpdateOperationsInput | number
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  price?: Prisma.FloatFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -375,8 +375,8 @@ export type TrainingUncheckedUpdateManyInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   objective?: Prisma.StringFieldUpdateOperationsInput | string
-  price?: Prisma.FloatFieldUpdateOperationsInput | number
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  price?: Prisma.FloatFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -386,8 +386,8 @@ export type TrainingCountOrderByAggregateInput = {
   name?: Prisma.SortOrder
   description?: Prisma.SortOrder
   objective?: Prisma.SortOrder
-  price?: Prisma.SortOrder
   image?: Prisma.SortOrder
+  price?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -401,8 +401,8 @@ export type TrainingMaxOrderByAggregateInput = {
   name?: Prisma.SortOrder
   description?: Prisma.SortOrder
   objective?: Prisma.SortOrder
-  price?: Prisma.SortOrder
   image?: Prisma.SortOrder
+  price?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -412,8 +412,8 @@ export type TrainingMinOrderByAggregateInput = {
   name?: Prisma.SortOrder
   description?: Prisma.SortOrder
   objective?: Prisma.SortOrder
-  price?: Prisma.SortOrder
   image?: Prisma.SortOrder
+  price?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -427,16 +427,16 @@ export type TrainingScalarRelationFilter = {
   isNot?: Prisma.TrainingWhereInput
 }
 
+export type NullableStringFieldUpdateOperationsInput = {
+  set?: string | null
+}
+
 export type FloatFieldUpdateOperationsInput = {
   set?: number
   increment?: number
   decrement?: number
   multiply?: number
   divide?: number
-}
-
-export type NullableStringFieldUpdateOperationsInput = {
-  set?: string | null
 }
 
 export type TrainingCreateNestedOneWithoutTrainingProgramsInput = {
@@ -458,8 +458,8 @@ export type TrainingCreateWithoutTrainingProgramsInput = {
   name: string
   description: string
   objective: string
-  price: number
   image?: string | null
+  price: number
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -469,8 +469,8 @@ export type TrainingUncheckedCreateWithoutTrainingProgramsInput = {
   name: string
   description: string
   objective: string
-  price: number
   image?: string | null
+  price: number
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -496,8 +496,8 @@ export type TrainingUpdateWithoutTrainingProgramsInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   objective?: Prisma.StringFieldUpdateOperationsInput | string
-  price?: Prisma.FloatFieldUpdateOperationsInput | number
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  price?: Prisma.FloatFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -507,8 +507,8 @@ export type TrainingUncheckedUpdateWithoutTrainingProgramsInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   objective?: Prisma.StringFieldUpdateOperationsInput | string
-  price?: Prisma.FloatFieldUpdateOperationsInput | number
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  price?: Prisma.FloatFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -549,8 +549,8 @@ export type TrainingSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs
   name?: boolean
   description?: boolean
   objective?: boolean
-  price?: boolean
   image?: boolean
+  price?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   trainingPrograms?: boolean | Prisma.Training$trainingProgramsArgs<ExtArgs>
@@ -562,8 +562,8 @@ export type TrainingSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exte
   name?: boolean
   description?: boolean
   objective?: boolean
-  price?: boolean
   image?: boolean
+  price?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }, ExtArgs["result"]["training"]>
@@ -573,8 +573,8 @@ export type TrainingSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exte
   name?: boolean
   description?: boolean
   objective?: boolean
-  price?: boolean
   image?: boolean
+  price?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }, ExtArgs["result"]["training"]>
@@ -584,13 +584,13 @@ export type TrainingSelectScalar = {
   name?: boolean
   description?: boolean
   objective?: boolean
-  price?: boolean
   image?: boolean
+  price?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type TrainingOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "description" | "objective" | "price" | "image" | "createdAt" | "updatedAt", ExtArgs["result"]["training"]>
+export type TrainingOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "description" | "objective" | "image" | "price" | "createdAt" | "updatedAt", ExtArgs["result"]["training"]>
 export type TrainingInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   trainingPrograms?: boolean | Prisma.Training$trainingProgramsArgs<ExtArgs>
   _count?: boolean | Prisma.TrainingCountOutputTypeDefaultArgs<ExtArgs>
@@ -608,8 +608,8 @@ export type $TrainingPayload<ExtArgs extends runtime.Types.Extensions.InternalAr
     name: string
     description: string
     objective: string
-    price: number
     image: string | null
+    price: number
     createdAt: Date
     updatedAt: Date
   }, ExtArgs["result"]["training"]>
@@ -1040,8 +1040,8 @@ export interface TrainingFieldRefs {
   readonly name: Prisma.FieldRef<"Training", 'String'>
   readonly description: Prisma.FieldRef<"Training", 'String'>
   readonly objective: Prisma.FieldRef<"Training", 'String'>
-  readonly price: Prisma.FieldRef<"Training", 'Float'>
   readonly image: Prisma.FieldRef<"Training", 'String'>
+  readonly price: Prisma.FieldRef<"Training", 'Float'>
   readonly createdAt: Prisma.FieldRef<"Training", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Training", 'DateTime'>
 }

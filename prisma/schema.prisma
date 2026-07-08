@@ -37,6 +37,7 @@ model Training {
   description String 
   objective  String
   image String? 
+  price Float
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
@@ -55,7 +56,11 @@ model TrainingProgram {
 
   program Program @relation(fields: [programId], references: [id])
   training Training @relation(fields: [trainingId], references: [id])
+
+  waves Wave[]
   modules Module[]
+
+  @@map("training_program")
 }
 
 
@@ -78,9 +83,13 @@ model Module {
 
 model Wave {
   id String @id @default(cuid())
-  startDate DateTime 
+  startDate DateTime @map("start_date") // unique formationProgram
   quota Int 
   status WaveStatus
   price Float
-  numberWave Int 
+  // numberWave Int @map("number_wave")
+  trainingProgramId String @map("training_program_id")
+
+  trainingProgram TrainingProgram @relation(fields: [trainingProgramId], references: [id])
+  @@map("waves")
 }

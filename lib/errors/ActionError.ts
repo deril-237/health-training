@@ -4,6 +4,7 @@ export class ActionError<TError extends {} = {}> extends Error {
   public statusCode: number;
   public fieldsErrors?: ErrorBody<TError>["fieldsErrors"];
   public details?: unknown;
+  public global?: string;
 
   constructor(statusCode: number, body?: ErrorBody<TError>) {
     super(
@@ -13,5 +14,6 @@ export class ActionError<TError extends {} = {}> extends Error {
     this.statusCode = statusCode;
     this.fieldsErrors = body?.fieldsErrors;
     this.details = body?.details;
+    this.global = body?.global;
   }
 }

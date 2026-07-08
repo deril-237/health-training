@@ -18,6 +18,7 @@ CREATE TABLE "trainings" (
     "description" TEXT NOT NULL,
     "objective" TEXT NOT NULL,
     "image" TEXT,
+    "price" DOUBLE PRECISION NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
 
@@ -25,14 +26,14 @@ CREATE TABLE "trainings" (
 );
 
 -- CreateTable
-CREATE TABLE "TrainingProgram" (
+CREATE TABLE "training_program" (
     "id" TEXT NOT NULL,
     "training_id" TEXT NOT NULL,
     "program_id" TEXT NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
 
-    CONSTRAINT "TrainingProgram_pkey" PRIMARY KEY ("id")
+    CONSTRAINT "training_program_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
@@ -68,10 +69,10 @@ CREATE UNIQUE INDEX "programs_duration_key" ON "programs"("duration");
 CREATE UNIQUE INDEX "trainings_name_key" ON "trainings"("name");
 
 -- AddForeignKey
-ALTER TABLE "TrainingProgram" ADD CONSTRAINT "TrainingProgram_program_id_fkey" FOREIGN KEY ("program_id") REFERENCES "programs"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "training_program" ADD CONSTRAINT "training_program_program_id_fkey" FOREIGN KEY ("program_id") REFERENCES "programs"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "TrainingProgram" ADD CONSTRAINT "TrainingProgram_training_id_fkey" FOREIGN KEY ("training_id") REFERENCES "trainings"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "training_program" ADD CONSTRAINT "training_program_training_id_fkey" FOREIGN KEY ("training_id") REFERENCES "trainings"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "modules" ADD CONSTRAINT "modules_training_program_id_fkey" FOREIGN KEY ("training_program_id") REFERENCES "TrainingProgram"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "modules" ADD CONSTRAINT "modules_training_program_id_fkey" FOREIGN KEY ("training_program_id") REFERENCES "training_program"("id") ON DELETE RESTRICT ON UPDATE CASCADE;

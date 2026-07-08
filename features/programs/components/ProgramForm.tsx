@@ -58,9 +58,6 @@ export const ProgramForm: FunctionComponent<ProgramFormProps> = ({
           type: "manual",
           message: error.fieldsErrors?.duration,
         });
-        setError("root", {
-          type: "manual",
-        });
         return;
       }
 

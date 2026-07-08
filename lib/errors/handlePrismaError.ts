@@ -7,16 +7,16 @@ export const prismaErrorcode = {
   notExist: "P2025",
 };
 
-type ErrorMap = {
-  unique?: Record<string, string>;
-  foreignKey?: Record<string, string>;
+type ErrorMap<Key extends string = string> = {
+  unique?: Partial<Record<Key, string>>;
+  foreignKey?: Partial<Record<Key, string>>;
   notExist?: string;
   internalError?: string;
 };
 
-export function handlePrismaError(
+export function handlePrismaError<T extends string = string>(
   error: unknown,
-  errorsMessage: ErrorMap,
+  errorsMessage: ErrorMap<T>,
 ): never {
   if (error instanceof Prisma.PrismaClientKnownRequestError) {
     console.log(error);
