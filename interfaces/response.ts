@@ -1,3 +1,5 @@
+import { CodeError } from "./error";
+
 export type ErrorBody<T extends {} = {}> = {
   global?: string;
   fieldsErrors?: Partial<Record<keyof T, string>>;
@@ -6,7 +8,6 @@ export type ErrorBody<T extends {} = {}> = {
 
 export interface ApiSuccess<TData = unknown> {
   success: true;
-  statusCode: number;
   message?: string;
   data: TData;
   error?: never;
@@ -14,7 +15,7 @@ export interface ApiSuccess<TData = unknown> {
 
 export interface ApiError<TError extends {} = {}> {
   success: false;
-  statusCode: number;
+  statusCode: CodeError;
   message?: string;
   data?: never;
   error?: ErrorBody<TError>;

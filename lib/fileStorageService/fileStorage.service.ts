@@ -1,5 +1,5 @@
 import { IFileStorageService } from "./fileStorage.interface";
-import cloudinary from "../cloudinary";
+import cloudinary from "./cloudinary";
 import { UploadApiResponse } from "cloudinary";
 
 class FileStorageService implements IFileStorageService {

@@ -18,7 +18,9 @@ import {
   ModalRoot,
 } from "@/components/molecules/modal/ModalRoot";
 import { MessagePopupModal } from "@/components/molecules/modal/MessagePopupModal";
-import { ProgramForm } from "@/features/programs/components/ProgramForm";
+import { ProgramForm } from "@/features/programs";
+import { CreateWaveForm } from "@/features/waves";
+import { UpdateWaveForm } from "@/features/waves/components/UpdateWaveForm";
 
 export type NavLink = {
   name: string;
@@ -28,7 +30,9 @@ export type NavLink = {
 
 const modalContent: ModalContentType = {
   program: ProgramForm,
+  createWave: CreateWaveForm,
   messagePopup: MessagePopupModal,
+  updateWave: UpdateWaveForm,
 };
 
 export default function AdminLayout({

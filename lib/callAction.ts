@@ -1,23 +1,24 @@
-import { APIResponse } from "@/interfaces/response";
-import { ActionError } from "@/lib/errors/ActionError";
+import { resolverError } from "./errors/resolverError";
+import { ActionResult } from "@/interfaces/actions";
+import { responseHelper } from "./response";
 
-export async function callAction<
+type Action<TData, TError extends {}, TArgs extends unknown[] = unknown[]> = (
+  ...args: TArgs
+) => Promise<ActionResult<TData, TError>>;
+
+export function action<
   TData,
   TError extends {} = {},
   TArgs extends unknown[] = unknown[],
->(
-  action: (...args: TArgs) => Promise<APIResponse<TData, TError>>,
-  ...args: TArgs
-): Promise<TData> {
-  const result = await action(...args);
-
-  if (result.success === false) {
-    console.error(
-      `Action failed with status code ${result.statusCode}: ${result.message}`,
-      result.error,
-    );
-    throw new ActionError<TError>(result.statusCode, result.error);
-  }
-
-  return result.data;
+>(fn: (...args: TArgs) => Promise<TData>): Action<TData, TError, TArgs> {
+  return async (...args: TArgs) => {
+    try {
+      const result = await fn(...args);
+      return responseHelper.success(result);
+    } catch (error) {
+      console.log(error);
+      const result = resolverError<TError>(error);
+      return result;
+    }
+  };
 }

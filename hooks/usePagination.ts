@@ -5,17 +5,15 @@ type ParamsPagination = {
   total: number;
   perPage?: number;
   onPageChange?: (page: number) => void;
-  defaultPage?: number;
+  page: number;
 };
 
 export function usePagination({
   total,
   perPage = DEFAULT_LIMIT,
   onPageChange,
-  defaultPage = FIRST_PAGE,
+  page = FIRST_PAGE,
 }: ParamsPagination) {
-  const [page, setPage] = useState(defaultPage);
-
   // calculate number total page
   const totalPages = Math.ceil(total / perPage);
 
@@ -26,14 +24,13 @@ export function usePagination({
   // utils identicators
   const hasNext = page < lastPage;
   const hasPrevious = page > firstPage;
-  const startIndex = (firstPage - 1) * perPage + 1;
+  const startIndex = (page - 1) * perPage + 1;
   const endIndex = Math.min(startIndex + perPage, total);
 
   const nextFunction = useCallback(() => {
     if (!hasNext) return;
 
     const nextPage = page + 1;
-    setPage(nextPage);
     onPageChange?.(nextPage);
   }, [page, hasNext, onPageChange]);
 
@@ -41,7 +38,6 @@ export function usePagination({
     if (!hasPrevious) return;
 
     const prevPage = page - 1;
-    setPage(prevPage);
     onPageChange?.(prevPage);
   }, [page, hasPrevious, onPageChange]);
 
@@ -49,7 +45,6 @@ export function usePagination({
     (targetPage: number) => {
       if (targetPage < firstPage || targetPage > lastPage) return;
 
-      setPage(targetPage);
       onPageChange?.(targetPage);
     },
     [totalPages, onPageChange],
@@ -62,9 +57,8 @@ export function usePagination({
     goToPage(firstPage);
   }, [goToPage]);
   const reset = useCallback(() => {
-    setPage(defaultPage);
-    onPageChange?.(defaultPage);
-  }, [defaultPage, onPageChange]);
+    onPageChange?.(page);
+  }, [page, onPageChange]);
 
   const getPageNumbers = useCallback(() => {
     const pages = [];

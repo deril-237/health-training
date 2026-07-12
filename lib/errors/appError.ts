@@ -11,7 +11,10 @@ export class InternalError extends AppError {
 }
 
 export class ConflictError<T> extends AppError {
-  constructor(public fieldError: Partial<Record<keyof T, string>>) {
+  constructor(
+    public fieldError: Partial<Record<keyof T, string>>,
+    public global?: string,
+  ) {
     super("conflict error");
   }
 }

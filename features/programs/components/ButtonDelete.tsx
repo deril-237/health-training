@@ -9,19 +9,20 @@ import { useMessagePopup } from "@/components/molecules";
 export const ButtonDelete: FunctionComponent<{ programId: string }> = ({
   programId,
 }) => {
-  const { isPending, mutateAsync } = useDeleteProgram(programId);
+  const { isPending, mutateAsync } = useDeleteProgram();
   const { openConfirm } = useMessagePopup();
 
   const deleteProgram = async () => {
-    try {
-      await mutateAsync();
-      toast.success("Programme supprimé avec succès !");
-    } catch (error) {
-      console.error("Erreur lors de la suppression du programme :", error);
+    const result = await mutateAsync(programId);
+
+    if (result.success === false) {
       toast.error(
         "Une erreur est survenue lors de la suppression du programme.",
       );
+
+      return;
     }
+    toast.success("Programme supprimé avec succès !");
   };
   const handleDelete = async () => {
     openConfirm({
@@ -37,10 +38,7 @@ export const ButtonDelete: FunctionComponent<{ programId: string }> = ({
   return (
     <>
       {isPending ? <SpinnerOverlay /> : null}
-      <Button
-        className="bg-error btn btn-error btn-sm p-2"
-        onClick={handleDelete}
-      >
+      <Button className="bg-error btn btn-error p-2" onClick={handleDelete}>
         <TrashIcon className="size-6 text-base-100" />
       </Button>
     </>

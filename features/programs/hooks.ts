@@ -4,11 +4,10 @@ import { FIRST_PAGE, PaginationParams } from "@/lib/pagination";
 import {
   createProgramAction,
   deleteProgramAction,
-  getListProgramAction,
+  getProgramListAction,
   updateProgramAction,
 } from "./actions";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { callAction } from "@/lib/callAction";
 
 export const programKeys = {
   all: ["programs"] as const,
@@ -21,7 +20,7 @@ export function useCreateProgram() {
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: async (data: FormData) => {
-      const result = await callAction(createProgramAction, data);
+      const result = await createProgramAction(data);
       return result;
     },
     onSuccess: () => {
@@ -35,9 +34,9 @@ export function useMutationProgram(programId?: string) {
   return useMutation({
     mutationFn: async (data: FormData) => {
       if (programId) {
-        return await callAction(updateProgramAction, programId, data);
+        return await updateProgramAction(programId, data);
       }
-      return await callAction(createProgramAction, data);
+      return await createProgramAction(data);
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: programKeys.all });
@@ -49,17 +48,25 @@ export function useGetProgramList(page = FIRST_PAGE) {
   return useQuery({
     queryKey: programKeys.list({ page }),
     queryFn: async () => {
-      const result = await callAction(getListProgramAction, { page });
-      return result;
+      const result = await getProgramListAction();
+
+      if (result.success === false) {
+        throw new Error(
+          result.error.global ??
+            "Erreur est survenue pendant le chargement des donnée",
+        );
+      }
+
+      return result.data;
     },
   });
 }
 
-export function useDeleteProgram(programId: string) {
+export function useDeleteProgram() {
   const queryClient = useQueryClient();
   return useMutation({
-    mutationFn: async () => {
-      await callAction(deleteProgramAction, programId);
+    mutationFn: async (programId: string) => {
+      return await deleteProgramAction(programId);
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: programKeys.all });

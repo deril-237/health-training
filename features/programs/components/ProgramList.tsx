@@ -6,8 +6,6 @@ import { Program } from "../types";
 import { Column } from "@/components/molecules/Table";
 import { PencilIcon } from "lucide-react";
 import { useGetProgramList } from "../hooks";
-import { usePagination } from "@/hooks/usePagination";
-import { FIRST_PAGE } from "@/lib/pagination";
 import { ButtonOpenModal } from "@/components/molecules/modal/ButtonOpenModal";
 import { ButtonDelete } from "./ButtonDelete";
 
@@ -98,23 +96,13 @@ const ProgramMobileView: FunctionComponent<{
 };
 
 export const ProgramList: FunctionComponent = () => {
-  const [page, setPage] = useState<number>(FIRST_PAGE);
-  const { error, data, isLoading } = useGetProgramList(page);
-  const pagination = usePagination({
-    defaultPage: FIRST_PAGE,
-    total: data?.meta.totalItems ?? 10,
-    onPageChange: setPage,
-  });
-
-  const programs: Program[] = data?.rows ?? [];
-
+  const { error, data, isLoading } = useGetProgramList();
   return (
     <DataTable
-      data={programs}
+      data={data ?? []}
       columns={columns}
       emptyMessage={error ? error.message : "No programs"}
       isLoading={isLoading}
-      pagination={pagination}
       mobileView={({ item, index }) => (
         <ProgramMobileView item={item} index={index} />
       )}

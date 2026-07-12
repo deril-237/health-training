@@ -1,11 +1,12 @@
 import { prisma } from "@/lib/prisma";
-import { CreateProgramInput, UpdateProgramInput } from "./schema";
+import { CreateProgramInput, UpdateProgramInput } from "./schemas";
 import { handlePrismaError } from "@/lib/errors/handlePrismaError";
 import {
   PaginationParams,
   getPaginationParams,
   buildPaginatedResult,
 } from "@/lib/pagination";
+import { Identifier } from "@/interfaces/entities";
 
 export async function createProgram(programData: CreateProgramInput) {
   try {
@@ -13,7 +14,6 @@ export async function createProgram(programData: CreateProgramInput) {
 
     return result;
   } catch (error) {
-    console.log(error);
     handlePrismaError(error, {
       unique: { duration: "un parcours avec cette durée existe déja" },
       internalError: "Erreur lors de l'enregistrement du parcour",
@@ -22,7 +22,7 @@ export async function createProgram(programData: CreateProgramInput) {
 }
 
 export async function updateProgram(
-  programId: string,
+  programId: Identifier,
   programData: UpdateProgramInput,
 ) {
   try {
@@ -42,27 +42,13 @@ export async function updateProgram(
   }
 }
 
-export async function getListProgram(paginationParams?: PaginationParams) {
-  const { skip, page, limit } = getPaginationParams(paginationParams);
+export async function getListProgram() {
+  const program = await prisma.program.findMany();
 
-  const [program, totalItems] = await Promise.all([
-    prisma.program.findMany({
-      skip,
-      take: limit,
-    }),
-    prisma.program.count(),
-  ]);
-
-  const result = buildPaginatedResult(program, {
-    currentPage: page,
-    totalItems,
-    limit,
-  });
-
-  return result;
+  return program;
 }
 
-export async function deleteProgram(programId: string) {
+export async function deleteProgram(programId: Identifier) {
   try {
     const result = await prisma.program.delete({ where: { id: programId } });
     return result;

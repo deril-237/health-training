@@ -34,7 +34,7 @@ export default function Input({
         {...props}
         aria-invalid={!!error}
         className={`
-            input input-primary w-full
+            input input-ghost input-primary w-full border border-zinc-950
             bg-base-100 text-base-content
             ${error ? "input-error outline-error" : ""}
             ${readOnly ? "bg-base-200 cursor-not-allowed" : ""}

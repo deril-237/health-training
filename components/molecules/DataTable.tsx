@@ -33,7 +33,9 @@ export function DataTable<T>({
       >
         <div className={`overflow-x-auto pb-30 bg-base-200`}>
           <TableByColumns startIndex={startIndex} data={data} {...tableProps} />
-          {showPagination && pagination && <Pagination {...pagination} />}
+          {showPagination && pagination && pagination.total && (
+            <Pagination {...pagination} />
+          )}
         </div>
       </div>
       {mobileView && (
