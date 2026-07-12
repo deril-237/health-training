@@ -6,7 +6,7 @@ export function toValidationErrorResponse<T extends {}>(
   errors: ErrorState<T>["errors"],
 ): ApiError<T> {
   return responseHelper.error({
-    statusCode: 400,
+    statusCode: "VALIDATION",
     error: {
       global: errors.global ?? "Validation failed",
       fieldsErrors: errors.fieldsErrors,

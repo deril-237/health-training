@@ -1,27 +1,28 @@
 import { FunctionComponent } from "react";
 import Input from "@/components/atoms/Input";
-import { ActionError } from "@/lib/errors/ActionError";
 import { AlertResponse } from "@/components/atoms/AlertResponse";
 import { useForm } from "react-hook-form";
 import { Button, ButtonLoading } from "@/components/atoms/Button";
 import { SaveIcon, Trash2Icon } from "lucide-react";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { updateWaveSchema } from "../schema";
-import { useUpdateWave } from "../hook";
+import { updateWaveSchema } from "../schemas";
+import { useUpdateWave } from "../hooks";
 import { Wave } from "../types";
+import { applyActionErrors } from "@/lib/forms/applyActionError";
 
 export type UpdateWaveFormProps = {
-  wave: Wave;
+  data: Wave;
 };
 
 export const UpdateWaveForm: FunctionComponent<UpdateWaveFormProps> = ({
-  wave,
+  data: wave,
 }) => {
   const {
     register,
     handleSubmit,
     setError,
     reset,
+    resetDefaultValues,
     formState: { isSubmitting, errors, isSubmitSuccessful },
   } = useForm({
     resolver: zodResolver(updateWaveSchema),
@@ -30,22 +31,14 @@ export const UpdateWaveForm: FunctionComponent<UpdateWaveFormProps> = ({
   const { mutateAsync: updateWave } = useUpdateWave(wave.id);
 
   const submit = handleSubmit(async (data) => {
-    try {
-      const wave = await updateWave(data);
-    } catch (error) {
-      if (error instanceof ActionError && error.statusCode === 409) {
-        setError("startDate", {
-          type: "manual",
-          message: error.fieldsErrors?.startDate,
-        });
-        return;
-      }
-      setError("root", {
-        type: "manual",
-        message:
-          "Une erreur est survenue. S'il vous plaît, réessayez plus tard ou contacté l'administrateur.",
-      });
+    const result = await updateWave(data);
+
+    if (result.success === false) {
+      applyActionErrors(result.error, setError);
+      return;
     }
+
+    // resetDefaultValues({ ...result.data }, {});
   });
 
   return (
@@ -95,3 +88,9 @@ export const UpdateWaveForm: FunctionComponent<UpdateWaveFormProps> = ({
     </form>
   );
 };
+
+declare module "@/store/useModalStore" {
+  interface ModalRegistry {
+    updateWave: Wave;
+  }
+}

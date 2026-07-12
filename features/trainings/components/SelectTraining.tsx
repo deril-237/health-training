@@ -5,7 +5,7 @@ import Select, {
   type SelectOption,
   type SelectValue,
 } from "@/components/atoms/Select";
-import { useInfiniteGetTrainingList } from "@/features/trainings/hook";
+import { useInfiniteGetTrainingList } from "@/features/trainings/hooks";
 import type { Training } from "@/features/trainings/types";
 
 type SelectTrainingProps = {

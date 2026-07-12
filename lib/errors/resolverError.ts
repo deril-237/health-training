@@ -8,25 +8,25 @@ import {
   UnauthorizedError,
   ForbiddenError,
 } from "./appError";
-import { ApiError } from "@/interfaces/response";
+import { ActionError } from "@/interfaces/actions";
 import { responseHelper } from "@/lib/response";
 
-export function resolverErrorToHttp<T extends {} = {}>(
+export function resolverError<T extends {} = {}>(
   error: unknown,
-): ApiError {
+): ActionError<T> {
   if (error instanceof ValidationError) {
-    return responseHelper.error({
-      statusCode: 400,
+    return responseHelper.error<T>({
+      statusCode: "VALIDATION",
       error: {
         global: "Validation failed",
-        fieldsErrors: error.fieldErrors,
+        fieldsErrors: error.fieldErrors as Record<keyof T, string>,
       },
     });
   }
 
   if (error instanceof BadRequestError) {
     return responseHelper.error({
-      statusCode: 400,
+      statusCode: "BAD_REQUEST",
       error: {
         global: error.message,
       },
@@ -35,7 +35,7 @@ export function resolverErrorToHttp<T extends {} = {}>(
 
   if (error instanceof UnauthorizedError) {
     return responseHelper.error({
-      statusCode: 401,
+      statusCode: "UNAUTHORIZE",
       error: {
         global: error.message,
       },
@@ -44,7 +44,7 @@ export function resolverErrorToHttp<T extends {} = {}>(
 
   if (error instanceof ForbiddenError) {
     return responseHelper.error({
-      statusCode: 403,
+      statusCode: "FORBIDDEN",
       error: {
         global: error.message,
       },
@@ -53,17 +53,17 @@ export function resolverErrorToHttp<T extends {} = {}>(
 
   if (error instanceof ConflictError) {
     return responseHelper.error({
-      statusCode: 409,
+      statusCode: "CONFLICT",
       error: {
         global: error.global,
-        fieldsErrors: error.fieldError as Record<string, string>,
+        fieldsErrors: error.fieldError,
       },
     });
   }
 
   if (error instanceof NotFoundError) {
     return responseHelper.error({
-      statusCode: 404,
+      statusCode: "NOT_FOUND",
       error: {
         global: error.message,
       },
@@ -72,7 +72,7 @@ export function resolverErrorToHttp<T extends {} = {}>(
 
   if (error instanceof InternalError) {
     return responseHelper.error({
-      statusCode: 500,
+      statusCode: "INTERNAL_ERROR",
       error: {
         global: error.message,
       },
@@ -81,7 +81,7 @@ export function resolverErrorToHttp<T extends {} = {}>(
 
   if (error instanceof AppError) {
     return responseHelper.error({
-      statusCode: 500,
+      statusCode: "INTERNAL_ERROR",
       error: {
         global: error.message,
       },
@@ -90,7 +90,7 @@ export function resolverErrorToHttp<T extends {} = {}>(
 
   // Gestion des erreurs non typées
   return responseHelper.error({
-    statusCode: 500,
+    statusCode: "INTERNAL_ERROR",
     error: {
       global: "An unexpected error occurred",
       details: error instanceof Error ? error.message : String(error),

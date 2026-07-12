@@ -10,7 +10,7 @@ import {
 import { XIcon } from "lucide-react";
 
 export type ModalContentType = {
-  [K in ModalType]: React.ComponentType<{ data: ModalRegistry[K] | undefined }>;
+  [K in ModalType]: React.ComponentType<{ data: ModalRegistry[K] }>;
 };
 
 // Types of modals that use a custom structure (no standard dialog)

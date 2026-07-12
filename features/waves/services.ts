@@ -1,7 +1,7 @@
 "use server";
 
 import { prisma } from "@/lib/prisma";
-import { CreateWaveInput, UpdateWaveInput } from "./schema";
+import { CreateWaveInput, UpdateWaveInput } from "./schemas";
 import { handlePrismaError } from "@/lib/errors/handlePrismaError";
 import {
   PaginationParams,
@@ -14,26 +14,28 @@ import { ConflictError } from "@/lib/errors/appError";
 
 export async function createWave(waveData: CreateWaveInput): Promise<Wave> {
   try {
-    const currentWave = await prisma.wave.findFirst({
-      where: { status: "OPEN" },
+    const lastWave = await prisma.wave.findFirst({
+      orderBy: { startDate: "desc" },
+      where: { trainingProgramId: waveData.trainingProgramId },
     });
 
-    if (currentWave === null) {
+    if (lastWave && lastWave.status !== "FINISHED") {
       throw new ConflictError(
         {},
         "Il existe déja une vague avec des inscriptions en cours pour ce parcours de formation",
       );
     }
 
-    const wave = prisma.wave.create({
+    const wave = await prisma.wave.create({
       data: {
         ...waveData,
-        status: "OPEN",
+        status: "PENDING",
       },
     });
 
     return wave;
   } catch (error) {
+    console.log(error);
     if (error instanceof ConflictError) {
       throw error;
     }
@@ -101,18 +103,11 @@ export async function updateWave(
   }
 }
 
-export async function lockInscriptionInWave(waveId: Identifier): Promise<Wave> {
+export async function lockWaveCourse(waveId: Identifier): Promise<Wave> {
   try {
     let wave = await prisma.wave.findUniqueOrThrow({ where: { id: waveId } });
 
-    if (wave.status === "FINISHED") {
-      throw new ConflictError({
-        status:
-          "Cette vague à terminés ces cours, on ne plus ouvrit les inscriptions",
-      });
-    }
-
-    wave.status = "PENDING"; // open course
+    wave.status = "FINISHED"; // finish course course
 
     wave = await prisma.wave.update({
       where: { id: waveId },
@@ -129,18 +124,11 @@ export async function lockInscriptionInWave(waveId: Identifier): Promise<Wave> {
   }
 }
 
-export async function unlockInscription(waveId: Identifier): Promise<Wave> {
+export async function unlockWaveCourse(waveId: Identifier): Promise<Wave> {
   try {
     let wave = await prisma.wave.findUniqueOrThrow({ where: { id: waveId } });
 
-    if (wave.status === "FINISHED") {
-      throw new ConflictError({
-        status:
-          "Cette vague à terminés ces cours, on ne plus ouvrit les inscriptions",
-      });
-    }
-
-    wave.status = "OPEN"; // reopen inscription
+    wave.status = "PENDING"; // reopen course
 
     wave = await prisma.wave.update({
       where: { id: waveId },

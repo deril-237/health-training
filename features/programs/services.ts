@@ -1,5 +1,5 @@
 import { prisma } from "@/lib/prisma";
-import { CreateProgramInput, UpdateProgramInput } from "./schema";
+import { CreateProgramInput, UpdateProgramInput } from "./schemas";
 import { handlePrismaError } from "@/lib/errors/handlePrismaError";
 import {
   PaginationParams,
@@ -42,24 +42,10 @@ export async function updateProgram(
   }
 }
 
-export async function getListProgram(paginationParams?: PaginationParams) {
-  const { skip, page, limit } = getPaginationParams(paginationParams);
+export async function getListProgram() {
+  const program = await prisma.program.findMany();
 
-  const [program, totalItems] = await Promise.all([
-    prisma.program.findMany({
-      skip,
-      take: limit,
-    }),
-    prisma.program.count(),
-  ]);
-
-  const result = buildPaginatedResult(program, {
-    currentPage: page,
-    totalItems,
-    limit,
-  });
-
-  return result;
+  return program;
 }
 
 export async function deleteProgram(programId: Identifier) {

@@ -1,5 +1,6 @@
 import { TitlePage } from "@/components/atoms/TitlePage";
 import { ButtonOpenModal } from "@/components/molecules/modal/ButtonOpenModal";
+import { WaveListWIthFilter } from "@/features/waves/components/WaveListWithfilter";
 import { List, PlusIcon } from "lucide-react";
 
 export default function Program() {
@@ -14,13 +15,13 @@ export default function Program() {
         <ButtonOpenModal
           modal="createWave"
           modalProps={null}
-          className="btn btn-info text-base-100"
+          className="btn btn-success text-base-100"
         >
           <PlusIcon className="size-6" />
           <span>Créer</span>
         </ButtonOpenModal>
       </div>
-      {/* <ProgramList /> */}
+      <WaveListWIthFilter />
     </div>
   );
 }

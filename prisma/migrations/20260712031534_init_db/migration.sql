@@ -5,8 +5,8 @@ CREATE TYPE "WaveStatus" AS ENUM ('PENDING', 'FINISHED', 'OPEN');
 CREATE TABLE "programs" (
     "id" TEXT NOT NULL,
     "duration" INTEGER NOT NULL,
-    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "updatedAt" TIMESTAMP(3) NOT NULL,
+    "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updated_at" TIMESTAMP(3) NOT NULL,
 
     CONSTRAINT "programs_pkey" PRIMARY KEY ("id")
 );
@@ -19,8 +19,8 @@ CREATE TABLE "trainings" (
     "objective" TEXT NOT NULL,
     "image" TEXT,
     "price" DOUBLE PRECISION NOT NULL,
-    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "updatedAt" TIMESTAMP(3) NOT NULL,
+    "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updated_at" TIMESTAMP(3) NOT NULL,
 
     CONSTRAINT "trainings_pkey" PRIMARY KEY ("id")
 );
@@ -30,8 +30,8 @@ CREATE TABLE "training_program" (
     "id" TEXT NOT NULL,
     "training_id" TEXT NOT NULL,
     "program_id" TEXT NOT NULL,
-    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "updatedAt" TIMESTAMP(3) NOT NULL,
+    "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updated_at" TIMESTAMP(3) NOT NULL,
 
     CONSTRAINT "training_program_pkey" PRIMARY KEY ("id")
 );
@@ -44,22 +44,24 @@ CREATE TABLE "modules" (
     "description" TEXT NOT NULL,
     "file" TEXT,
     "training_program_id" TEXT NOT NULL,
-    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "updatedAt" TIMESTAMP(3) NOT NULL,
+    "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updated_at" TIMESTAMP(3) NOT NULL,
 
     CONSTRAINT "modules_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
-CREATE TABLE "Wave" (
+CREATE TABLE "waves" (
     "id" TEXT NOT NULL,
-    "startDate" TIMESTAMP(3) NOT NULL,
+    "start_date" TIMESTAMP(3) NOT NULL,
     "quota" INTEGER NOT NULL,
     "status" "WaveStatus" NOT NULL,
     "price" DOUBLE PRECISION NOT NULL,
-    "numberWave" INTEGER NOT NULL,
+    "training_program_id" TEXT NOT NULL,
+    "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updated_at" TIMESTAMP(3) NOT NULL,
 
-    CONSTRAINT "Wave_pkey" PRIMARY KEY ("id")
+    CONSTRAINT "waves_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateIndex
@@ -76,3 +78,6 @@ ALTER TABLE "training_program" ADD CONSTRAINT "training_program_training_id_fkey
 
 -- AddForeignKey
 ALTER TABLE "modules" ADD CONSTRAINT "modules_training_program_id_fkey" FOREIGN KEY ("training_program_id") REFERENCES "training_program"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "waves" ADD CONSTRAINT "waves_training_program_id_fkey" FOREIGN KEY ("training_program_id") REFERENCES "training_program"("id") ON DELETE RESTRICT ON UPDATE CASCADE;

@@ -6,7 +6,7 @@ export { type Wave, type WaveStatus } from "@/lib/generated/prisma/client";
 
 export type FilterWave = {
   trainingProgramId?: Identifier;
-  status: WaveStatus;
+  status?: WaveStatus;
 };
 
 export type WaveList = PaginatedResult<Wave>;

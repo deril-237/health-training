@@ -5,7 +5,7 @@ import Select, {
   type SelectOption,
   type SelectValue,
 } from "@/components/atoms/Select";
-import { useGetTrainingProgramList } from "../hook";
+import { useGetTrainingProgramList } from "../hooks";
 
 type SelectTrainingProgramProps = {
   trainingId: string;
@@ -31,12 +31,12 @@ function toProgramOption(
   trainingProgram: TrainingProgramWithProgram,
 ): SelectOption {
   const programLabel = trainingProgram.program?.duration
-    ? `Programme ${trainingProgram.program.duration}`
+    ? `parcours de ${trainingProgram.program.duration} mois`
     : "Programme";
 
   return {
     label: programLabel,
-    value: trainingProgram.program?.id ?? trainingProgram.id,
+    value: trainingProgram.id,
   };
 }
 

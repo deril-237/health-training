@@ -107,6 +107,7 @@ export const Select: FunctionComponent<TypeSelectProps> = ({
 
       <ReactSelect
         unstyled
+        instanceId={resolvedInputId}
         inputId={resolvedInputId}
         name={name}
         options={options}

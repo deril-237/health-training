@@ -11,11 +11,11 @@ import {
   UpdateProgramInput,
   createProgramSchema,
   updateProgramSchema,
-} from "../schema";
+} from "../schemas";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutationProgram } from "../hooks";
-import { ActionError } from "@/lib/errors/ActionError";
 import { AlertResponse } from "@/components/atoms/AlertResponse";
+import { applyActionErrors } from "@/lib/forms/applyActionError";
 
 export type ProgramFormProps = { data: Program | null | undefined };
 
@@ -23,7 +23,6 @@ export const ProgramForm: FunctionComponent<ProgramFormProps> = ({
   data: program,
 }) => {
   const { mutateAsync } = useMutationProgram(program ? program.id : undefined);
-  console.log("program", program);
 
   const {
     register,
@@ -43,29 +42,19 @@ export const ProgramForm: FunctionComponent<ProgramFormProps> = ({
   });
 
   const submit = handleSubmit(async (data) => {
-    try {
-      const formData = new FormData();
-      formData.append("duration", data.duration.toString());
+    const formData = new FormData();
+    formData.append("duration", data.duration.toString());
 
-      await mutateAsync(formData);
+    const result = await mutateAsync(formData);
 
-      if (!program) {
-        reset();
-      }
-    } catch (error) {
-      if (error instanceof ActionError && error.statusCode === 409) {
-        setError("duration", {
-          type: "manual",
-          message: error.fieldsErrors?.duration,
-        });
-        return;
-      }
+    if (result.success === false) {
+      console.log(result.error);
+      applyActionErrors(result.error, setError);
+      return;
+    }
 
-      setError("root", {
-        type: "manual",
-        message:
-          "Une erreur est survenue. S'il vous plaît, réessayez plus tard ou contacté l'administrateur.",
-      });
+    if (!program) {
+      reset();
     }
   });
 

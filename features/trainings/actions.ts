@@ -1,27 +1,21 @@
 "use server";
 
-import { PaginatedResult, PaginationParams } from "@/lib/pagination";
-import { ServerAction } from "@/interfaces/actions";
-import { Training } from "./types";
+import { PaginationParams } from "@/lib/pagination";
 import * as trainingService from "./services";
-import { responseHelper } from "@/lib/response";
-import { TrainingProgram } from "./types";
 import { Identifier } from "@/interfaces/entities";
+import { action } from "@/lib/callAction";
 
-export const getTrainingListAction: ServerAction<
-  [PaginationParams],
-  PaginatedResult<Training>
-> = async (paginationParams) => {
-  const trainingList = await trainingService.getTrainingList(paginationParams);
+export const getTrainingListAction = action(
+  async (paginationParams: PaginationParams) => {
+    const trainingList =
+      await trainingService.getTrainingList(paginationParams);
 
-  return responseHelper.success(trainingList);
-};
+    return trainingList;
+  },
+);
 
-export const getTrainingProgramList: ServerAction<
-  [Identifier],
-  TrainingProgram[]
-> = async (trainingId) => {
+export const getTrainingProgramList = action(async (trainingId: Identifier) => {
   const program = await trainingService.getTrainingProgram(trainingId);
 
-  return responseHelper.success(program);
-};
+  return program;
+});
