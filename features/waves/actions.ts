@@ -73,7 +73,7 @@ export const lockWaveCourseAction = action(async (waveId: string) => {
     waveId,
     () => new NotFoundError(`Il existe aucun vague avec cette identifiant`),
   );
-  return await waveService.lockWaveCourse(waveId);
+  return await waveService.lockWaveCourse(waveIdParsed);
 });
 
 export const unlockWaveCourseAction = action(async (waveId: string) => {
@@ -82,5 +82,5 @@ export const unlockWaveCourseAction = action(async (waveId: string) => {
     waveId,
     () => new NotFoundError(`Il existe aucun vague avec cette identifiant`),
   );
-  return await waveService.unlockWaveCourse(waveId);
+  return await waveService.unlockWaveCourse(waveIdParsed);
 });
