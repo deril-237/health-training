@@ -66,3 +66,23 @@ export type Module = Prisma.ModuleModel
  * 
  */
 export type Wave = Prisma.WaveModel
+/**
+ * Model Student
+ * 
+ */
+export type Student = Prisma.StudentModel
+/**
+ * Model OptionMotivation
+ * 
+ */
+export type OptionMotivation = Prisma.OptionMotivationModel
+/**
+ * Model StudentMotivation
+ * 
+ */
+export type StudentMotivation = Prisma.StudentMotivationModel
+/**
+ * Model Inscription
+ * 
+ */
+export type Inscription = Prisma.InscriptionModel

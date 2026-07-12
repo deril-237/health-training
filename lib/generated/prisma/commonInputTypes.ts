@@ -181,6 +181,23 @@ export type EnumWaveStatusWithAggregatesFilter<$PrismaModel = never> = {
   _max?: Prisma.NestedEnumWaveStatusFilter<$PrismaModel>
 }
 
+export type EnumModalityOptionFilter<$PrismaModel = never> = {
+  equals?: $Enums.ModalityOption | Prisma.EnumModalityOptionFieldRefInput<$PrismaModel>
+  in?: $Enums.ModalityOption[] | Prisma.ListEnumModalityOptionFieldRefInput<$PrismaModel>
+  notIn?: $Enums.ModalityOption[] | Prisma.ListEnumModalityOptionFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumModalityOptionFilter<$PrismaModel> | $Enums.ModalityOption
+}
+
+export type EnumModalityOptionWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.ModalityOption | Prisma.EnumModalityOptionFieldRefInput<$PrismaModel>
+  in?: $Enums.ModalityOption[] | Prisma.ListEnumModalityOptionFieldRefInput<$PrismaModel>
+  notIn?: $Enums.ModalityOption[] | Prisma.ListEnumModalityOptionFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumModalityOptionWithAggregatesFilter<$PrismaModel> | $Enums.ModalityOption
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumModalityOptionFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumModalityOptionFilter<$PrismaModel>
+}
+
 export type NestedStringFilter<$PrismaModel = never> = {
   equals?: string | Prisma.StringFieldRefInput<$PrismaModel>
   in?: string[] | Prisma.ListStringFieldRefInput<$PrismaModel>
@@ -348,6 +365,23 @@ export type NestedEnumWaveStatusWithAggregatesFilter<$PrismaModel = never> = {
   _count?: Prisma.NestedIntFilter<$PrismaModel>
   _min?: Prisma.NestedEnumWaveStatusFilter<$PrismaModel>
   _max?: Prisma.NestedEnumWaveStatusFilter<$PrismaModel>
+}
+
+export type NestedEnumModalityOptionFilter<$PrismaModel = never> = {
+  equals?: $Enums.ModalityOption | Prisma.EnumModalityOptionFieldRefInput<$PrismaModel>
+  in?: $Enums.ModalityOption[] | Prisma.ListEnumModalityOptionFieldRefInput<$PrismaModel>
+  notIn?: $Enums.ModalityOption[] | Prisma.ListEnumModalityOptionFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumModalityOptionFilter<$PrismaModel> | $Enums.ModalityOption
+}
+
+export type NestedEnumModalityOptionWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.ModalityOption | Prisma.EnumModalityOptionFieldRefInput<$PrismaModel>
+  in?: $Enums.ModalityOption[] | Prisma.ListEnumModalityOptionFieldRefInput<$PrismaModel>
+  notIn?: $Enums.ModalityOption[] | Prisma.ListEnumModalityOptionFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumModalityOptionWithAggregatesFilter<$PrismaModel> | $Enums.ModalityOption
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumModalityOptionFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumModalityOptionFilter<$PrismaModel>
 }
 
 

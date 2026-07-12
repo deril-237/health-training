@@ -16,3 +16,22 @@ export const WaveStatus = {
 } as const
 
 export type WaveStatus = (typeof WaveStatus)[keyof typeof WaveStatus]
+
+
+export const InscriptionStatus = {
+  DRAFT: 'DRAFT',
+  EMAIL_PENDING: 'EMAIL_PENDING',
+  SUBMITTED: 'SUBMITTED',
+  ACCEPTED: 'ACCEPTED',
+  REJECTED: 'REJECTED'
+} as const
+
+export type InscriptionStatus = (typeof InscriptionStatus)[keyof typeof InscriptionStatus]
+
+
+export const ModalityOption = {
+  ON_LINE: 'ON_LINE',
+  OFF_LINE: 'OFF_LINE'
+} as const
+
+export type ModalityOption = (typeof ModalityOption)[keyof typeof ModalityOption]
