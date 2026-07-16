@@ -244,6 +244,7 @@ export type WaveWhereInput = {
   trainingProgramId?: Prisma.StringFilter<"Wave"> | string
   createdAt?: Prisma.DateTimeFilter<"Wave"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Wave"> | Date | string
+  inscriptions?: Prisma.InscriptionListRelationFilter
   trainingProgram?: Prisma.XOR<Prisma.TrainingProgramScalarRelationFilter, Prisma.TrainingProgramWhereInput>
 }
 
@@ -256,6 +257,7 @@ export type WaveOrderByWithRelationInput = {
   trainingProgramId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  inscriptions?: Prisma.InscriptionOrderByRelationAggregateInput
   trainingProgram?: Prisma.TrainingProgramOrderByWithRelationInput
 }
 
@@ -271,6 +273,7 @@ export type WaveWhereUniqueInput = Prisma.AtLeast<{
   trainingProgramId?: Prisma.StringFilter<"Wave"> | string
   createdAt?: Prisma.DateTimeFilter<"Wave"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Wave"> | Date | string
+  inscriptions?: Prisma.InscriptionListRelationFilter
   trainingProgram?: Prisma.XOR<Prisma.TrainingProgramScalarRelationFilter, Prisma.TrainingProgramWhereInput>
 }, "id">
 
@@ -312,6 +315,7 @@ export type WaveCreateInput = {
   price: number
   createdAt?: Date | string
   updatedAt?: Date | string
+  inscriptions?: Prisma.InscriptionCreateNestedManyWithoutWaveInput
   trainingProgram: Prisma.TrainingProgramCreateNestedOneWithoutWavesInput
 }
 
@@ -324,6 +328,7 @@ export type WaveUncheckedCreateInput = {
   trainingProgramId: string
   createdAt?: Date | string
   updatedAt?: Date | string
+  inscriptions?: Prisma.InscriptionUncheckedCreateNestedManyWithoutWaveInput
 }
 
 export type WaveUpdateInput = {
@@ -334,6 +339,7 @@ export type WaveUpdateInput = {
   price?: Prisma.FloatFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  inscriptions?: Prisma.InscriptionUpdateManyWithoutWaveNestedInput
   trainingProgram?: Prisma.TrainingProgramUpdateOneRequiredWithoutWavesNestedInput
 }
 
@@ -346,6 +352,7 @@ export type WaveUncheckedUpdateInput = {
   trainingProgramId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  inscriptions?: Prisma.InscriptionUncheckedUpdateManyWithoutWaveNestedInput
 }
 
 export type WaveCreateManyInput = {
@@ -433,6 +440,11 @@ export type WaveSumOrderByAggregateInput = {
   price?: Prisma.SortOrder
 }
 
+export type WaveScalarRelationFilter = {
+  is?: Prisma.WaveWhereInput
+  isNot?: Prisma.WaveWhereInput
+}
+
 export type WaveCreateNestedManyWithoutTrainingProgramInput = {
   create?: Prisma.XOR<Prisma.WaveCreateWithoutTrainingProgramInput, Prisma.WaveUncheckedCreateWithoutTrainingProgramInput> | Prisma.WaveCreateWithoutTrainingProgramInput[] | Prisma.WaveUncheckedCreateWithoutTrainingProgramInput[]
   connectOrCreate?: Prisma.WaveCreateOrConnectWithoutTrainingProgramInput | Prisma.WaveCreateOrConnectWithoutTrainingProgramInput[]
@@ -479,6 +491,20 @@ export type EnumWaveStatusFieldUpdateOperationsInput = {
   set?: $Enums.WaveStatus
 }
 
+export type WaveCreateNestedOneWithoutInscriptionsInput = {
+  create?: Prisma.XOR<Prisma.WaveCreateWithoutInscriptionsInput, Prisma.WaveUncheckedCreateWithoutInscriptionsInput>
+  connectOrCreate?: Prisma.WaveCreateOrConnectWithoutInscriptionsInput
+  connect?: Prisma.WaveWhereUniqueInput
+}
+
+export type WaveUpdateOneRequiredWithoutInscriptionsNestedInput = {
+  create?: Prisma.XOR<Prisma.WaveCreateWithoutInscriptionsInput, Prisma.WaveUncheckedCreateWithoutInscriptionsInput>
+  connectOrCreate?: Prisma.WaveCreateOrConnectWithoutInscriptionsInput
+  upsert?: Prisma.WaveUpsertWithoutInscriptionsInput
+  connect?: Prisma.WaveWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.WaveUpdateToOneWithWhereWithoutInscriptionsInput, Prisma.WaveUpdateWithoutInscriptionsInput>, Prisma.WaveUncheckedUpdateWithoutInscriptionsInput>
+}
+
 export type WaveCreateWithoutTrainingProgramInput = {
   id?: string
   startDate: Date | string
@@ -487,6 +513,7 @@ export type WaveCreateWithoutTrainingProgramInput = {
   price: number
   createdAt?: Date | string
   updatedAt?: Date | string
+  inscriptions?: Prisma.InscriptionCreateNestedManyWithoutWaveInput
 }
 
 export type WaveUncheckedCreateWithoutTrainingProgramInput = {
@@ -497,6 +524,7 @@ export type WaveUncheckedCreateWithoutTrainingProgramInput = {
   price: number
   createdAt?: Date | string
   updatedAt?: Date | string
+  inscriptions?: Prisma.InscriptionUncheckedCreateNestedManyWithoutWaveInput
 }
 
 export type WaveCreateOrConnectWithoutTrainingProgramInput = {
@@ -539,6 +567,66 @@ export type WaveScalarWhereInput = {
   updatedAt?: Prisma.DateTimeFilter<"Wave"> | Date | string
 }
 
+export type WaveCreateWithoutInscriptionsInput = {
+  id?: string
+  startDate: Date | string
+  quota: number
+  status: $Enums.WaveStatus
+  price: number
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  trainingProgram: Prisma.TrainingProgramCreateNestedOneWithoutWavesInput
+}
+
+export type WaveUncheckedCreateWithoutInscriptionsInput = {
+  id?: string
+  startDate: Date | string
+  quota: number
+  status: $Enums.WaveStatus
+  price: number
+  trainingProgramId: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+}
+
+export type WaveCreateOrConnectWithoutInscriptionsInput = {
+  where: Prisma.WaveWhereUniqueInput
+  create: Prisma.XOR<Prisma.WaveCreateWithoutInscriptionsInput, Prisma.WaveUncheckedCreateWithoutInscriptionsInput>
+}
+
+export type WaveUpsertWithoutInscriptionsInput = {
+  update: Prisma.XOR<Prisma.WaveUpdateWithoutInscriptionsInput, Prisma.WaveUncheckedUpdateWithoutInscriptionsInput>
+  create: Prisma.XOR<Prisma.WaveCreateWithoutInscriptionsInput, Prisma.WaveUncheckedCreateWithoutInscriptionsInput>
+  where?: Prisma.WaveWhereInput
+}
+
+export type WaveUpdateToOneWithWhereWithoutInscriptionsInput = {
+  where?: Prisma.WaveWhereInput
+  data: Prisma.XOR<Prisma.WaveUpdateWithoutInscriptionsInput, Prisma.WaveUncheckedUpdateWithoutInscriptionsInput>
+}
+
+export type WaveUpdateWithoutInscriptionsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  quota?: Prisma.IntFieldUpdateOperationsInput | number
+  status?: Prisma.EnumWaveStatusFieldUpdateOperationsInput | $Enums.WaveStatus
+  price?: Prisma.FloatFieldUpdateOperationsInput | number
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  trainingProgram?: Prisma.TrainingProgramUpdateOneRequiredWithoutWavesNestedInput
+}
+
+export type WaveUncheckedUpdateWithoutInscriptionsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  quota?: Prisma.IntFieldUpdateOperationsInput | number
+  status?: Prisma.EnumWaveStatusFieldUpdateOperationsInput | $Enums.WaveStatus
+  price?: Prisma.FloatFieldUpdateOperationsInput | number
+  trainingProgramId?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
 export type WaveCreateManyTrainingProgramInput = {
   id?: string
   startDate: Date | string
@@ -557,6 +645,7 @@ export type WaveUpdateWithoutTrainingProgramInput = {
   price?: Prisma.FloatFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  inscriptions?: Prisma.InscriptionUpdateManyWithoutWaveNestedInput
 }
 
 export type WaveUncheckedUpdateWithoutTrainingProgramInput = {
@@ -567,6 +656,7 @@ export type WaveUncheckedUpdateWithoutTrainingProgramInput = {
   price?: Prisma.FloatFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  inscriptions?: Prisma.InscriptionUncheckedUpdateManyWithoutWaveNestedInput
 }
 
 export type WaveUncheckedUpdateManyWithoutTrainingProgramInput = {
@@ -580,6 +670,35 @@ export type WaveUncheckedUpdateManyWithoutTrainingProgramInput = {
 }
 
 
+/**
+ * Count Type WaveCountOutputType
+ */
+
+export type WaveCountOutputType = {
+  inscriptions: number
+}
+
+export type WaveCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  inscriptions?: boolean | WaveCountOutputTypeCountInscriptionsArgs
+}
+
+/**
+ * WaveCountOutputType without action
+ */
+export type WaveCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the WaveCountOutputType
+   */
+  select?: Prisma.WaveCountOutputTypeSelect<ExtArgs> | null
+}
+
+/**
+ * WaveCountOutputType without action
+ */
+export type WaveCountOutputTypeCountInscriptionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.InscriptionWhereInput
+}
+
 
 export type WaveSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -590,7 +709,9 @@ export type WaveSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   trainingProgramId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  inscriptions?: boolean | Prisma.Wave$inscriptionsArgs<ExtArgs>
   trainingProgram?: boolean | Prisma.TrainingProgramDefaultArgs<ExtArgs>
+  _count?: boolean | Prisma.WaveCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["wave"]>
 
 export type WaveSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -630,7 +751,9 @@ export type WaveSelectScalar = {
 
 export type WaveOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "startDate" | "quota" | "status" | "price" | "trainingProgramId" | "createdAt" | "updatedAt", ExtArgs["result"]["wave"]>
 export type WaveInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  inscriptions?: boolean | Prisma.Wave$inscriptionsArgs<ExtArgs>
   trainingProgram?: boolean | Prisma.TrainingProgramDefaultArgs<ExtArgs>
+  _count?: boolean | Prisma.WaveCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type WaveIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   trainingProgram?: boolean | Prisma.TrainingProgramDefaultArgs<ExtArgs>
@@ -642,6 +765,7 @@ export type WaveIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensi
 export type $WavePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Wave"
   objects: {
+    inscriptions: Prisma.$InscriptionPayload<ExtArgs>[]
     trainingProgram: Prisma.$TrainingProgramPayload<ExtArgs>
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
@@ -1047,6 +1171,7 @@ readonly fields: WaveFieldRefs;
  */
 export interface Prisma__WaveClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
+  inscriptions<T extends Prisma.Wave$inscriptionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Wave$inscriptionsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$InscriptionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   trainingProgram<T extends Prisma.TrainingProgramDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.TrainingProgramDefaultArgs<ExtArgs>>): Prisma.Prisma__TrainingProgramClient<runtime.Types.Result.GetResult<Prisma.$TrainingProgramPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -1483,6 +1608,30 @@ export type WaveDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Internal
    * Limit how many Waves to delete.
    */
   limit?: number
+}
+
+/**
+ * Wave.inscriptions
+ */
+export type Wave$inscriptionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Inscription
+   */
+  select?: Prisma.InscriptionSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Inscription
+   */
+  omit?: Prisma.InscriptionOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.InscriptionInclude<ExtArgs> | null
+  where?: Prisma.InscriptionWhereInput
+  orderBy?: Prisma.InscriptionOrderByWithRelationInput | Prisma.InscriptionOrderByWithRelationInput[]
+  cursor?: Prisma.InscriptionWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.InscriptionScalarFieldEnum | Prisma.InscriptionScalarFieldEnum[]
 }
 
 /**

@@ -181,11 +181,28 @@ export type EnumWaveStatusWithAggregatesFilter<$PrismaModel = never> = {
   _max?: Prisma.NestedEnumWaveStatusFilter<$PrismaModel>
 }
 
+export type EnumInscriptionStatusFilter<$PrismaModel = never> = {
+  equals?: $Enums.InscriptionStatus | Prisma.EnumInscriptionStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.InscriptionStatus[] | Prisma.ListEnumInscriptionStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.InscriptionStatus[] | Prisma.ListEnumInscriptionStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumInscriptionStatusFilter<$PrismaModel> | $Enums.InscriptionStatus
+}
+
 export type EnumModalityOptionFilter<$PrismaModel = never> = {
   equals?: $Enums.ModalityOption | Prisma.EnumModalityOptionFieldRefInput<$PrismaModel>
   in?: $Enums.ModalityOption[] | Prisma.ListEnumModalityOptionFieldRefInput<$PrismaModel>
   notIn?: $Enums.ModalityOption[] | Prisma.ListEnumModalityOptionFieldRefInput<$PrismaModel>
   not?: Prisma.NestedEnumModalityOptionFilter<$PrismaModel> | $Enums.ModalityOption
+}
+
+export type EnumInscriptionStatusWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.InscriptionStatus | Prisma.EnumInscriptionStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.InscriptionStatus[] | Prisma.ListEnumInscriptionStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.InscriptionStatus[] | Prisma.ListEnumInscriptionStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumInscriptionStatusWithAggregatesFilter<$PrismaModel> | $Enums.InscriptionStatus
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumInscriptionStatusFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumInscriptionStatusFilter<$PrismaModel>
 }
 
 export type EnumModalityOptionWithAggregatesFilter<$PrismaModel = never> = {
@@ -367,11 +384,28 @@ export type NestedEnumWaveStatusWithAggregatesFilter<$PrismaModel = never> = {
   _max?: Prisma.NestedEnumWaveStatusFilter<$PrismaModel>
 }
 
+export type NestedEnumInscriptionStatusFilter<$PrismaModel = never> = {
+  equals?: $Enums.InscriptionStatus | Prisma.EnumInscriptionStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.InscriptionStatus[] | Prisma.ListEnumInscriptionStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.InscriptionStatus[] | Prisma.ListEnumInscriptionStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumInscriptionStatusFilter<$PrismaModel> | $Enums.InscriptionStatus
+}
+
 export type NestedEnumModalityOptionFilter<$PrismaModel = never> = {
   equals?: $Enums.ModalityOption | Prisma.EnumModalityOptionFieldRefInput<$PrismaModel>
   in?: $Enums.ModalityOption[] | Prisma.ListEnumModalityOptionFieldRefInput<$PrismaModel>
   notIn?: $Enums.ModalityOption[] | Prisma.ListEnumModalityOptionFieldRefInput<$PrismaModel>
   not?: Prisma.NestedEnumModalityOptionFilter<$PrismaModel> | $Enums.ModalityOption
+}
+
+export type NestedEnumInscriptionStatusWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.InscriptionStatus | Prisma.EnumInscriptionStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.InscriptionStatus[] | Prisma.ListEnumInscriptionStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.InscriptionStatus[] | Prisma.ListEnumInscriptionStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumInscriptionStatusWithAggregatesFilter<$PrismaModel> | $Enums.InscriptionStatus
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumInscriptionStatusFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumInscriptionStatusFilter<$PrismaModel>
 }
 
 export type NestedEnumModalityOptionWithAggregatesFilter<$PrismaModel = never> = {

@@ -29,6 +29,8 @@ export type StudentMotivationMinAggregateOutputType = {
   studentId: string | null
   optionId: string | null
   textResponse: string | null
+  createdAt: Date | null
+  updatedAt: Date | null
 }
 
 export type StudentMotivationMaxAggregateOutputType = {
@@ -36,6 +38,8 @@ export type StudentMotivationMaxAggregateOutputType = {
   studentId: string | null
   optionId: string | null
   textResponse: string | null
+  createdAt: Date | null
+  updatedAt: Date | null
 }
 
 export type StudentMotivationCountAggregateOutputType = {
@@ -43,6 +47,8 @@ export type StudentMotivationCountAggregateOutputType = {
   studentId: number
   optionId: number
   textResponse: number
+  createdAt: number
+  updatedAt: number
   _all: number
 }
 
@@ -52,6 +58,8 @@ export type StudentMotivationMinAggregateInputType = {
   studentId?: true
   optionId?: true
   textResponse?: true
+  createdAt?: true
+  updatedAt?: true
 }
 
 export type StudentMotivationMaxAggregateInputType = {
@@ -59,6 +67,8 @@ export type StudentMotivationMaxAggregateInputType = {
   studentId?: true
   optionId?: true
   textResponse?: true
+  createdAt?: true
+  updatedAt?: true
 }
 
 export type StudentMotivationCountAggregateInputType = {
@@ -66,6 +76,8 @@ export type StudentMotivationCountAggregateInputType = {
   studentId?: true
   optionId?: true
   textResponse?: true
+  createdAt?: true
+  updatedAt?: true
   _all?: true
 }
 
@@ -146,6 +158,8 @@ export type StudentMotivationGroupByOutputType = {
   studentId: string
   optionId: string | null
   textResponse: string | null
+  createdAt: Date
+  updatedAt: Date
   _count: StudentMotivationCountAggregateOutputType | null
   _min: StudentMotivationMinAggregateOutputType | null
   _max: StudentMotivationMaxAggregateOutputType | null
@@ -174,6 +188,8 @@ export type StudentMotivationWhereInput = {
   studentId?: Prisma.StringFilter<"StudentMotivation"> | string
   optionId?: Prisma.StringNullableFilter<"StudentMotivation"> | string | null
   textResponse?: Prisma.StringNullableFilter<"StudentMotivation"> | string | null
+  createdAt?: Prisma.DateTimeFilter<"StudentMotivation"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"StudentMotivation"> | Date | string
   student?: Prisma.XOR<Prisma.StudentScalarRelationFilter, Prisma.StudentWhereInput>
   option?: Prisma.XOR<Prisma.OptionMotivationNullableScalarRelationFilter, Prisma.OptionMotivationWhereInput> | null
 }
@@ -183,6 +199,8 @@ export type StudentMotivationOrderByWithRelationInput = {
   studentId?: Prisma.SortOrder
   optionId?: Prisma.SortOrderInput | Prisma.SortOrder
   textResponse?: Prisma.SortOrderInput | Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
   student?: Prisma.StudentOrderByWithRelationInput
   option?: Prisma.OptionMotivationOrderByWithRelationInput
 }
@@ -196,6 +214,8 @@ export type StudentMotivationWhereUniqueInput = Prisma.AtLeast<{
   studentId?: Prisma.StringFilter<"StudentMotivation"> | string
   optionId?: Prisma.StringNullableFilter<"StudentMotivation"> | string | null
   textResponse?: Prisma.StringNullableFilter<"StudentMotivation"> | string | null
+  createdAt?: Prisma.DateTimeFilter<"StudentMotivation"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"StudentMotivation"> | Date | string
   student?: Prisma.XOR<Prisma.StudentScalarRelationFilter, Prisma.StudentWhereInput>
   option?: Prisma.XOR<Prisma.OptionMotivationNullableScalarRelationFilter, Prisma.OptionMotivationWhereInput> | null
 }, "id" | "studentId_optionId">
@@ -205,6 +225,8 @@ export type StudentMotivationOrderByWithAggregationInput = {
   studentId?: Prisma.SortOrder
   optionId?: Prisma.SortOrderInput | Prisma.SortOrder
   textResponse?: Prisma.SortOrderInput | Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
   _count?: Prisma.StudentMotivationCountOrderByAggregateInput
   _max?: Prisma.StudentMotivationMaxOrderByAggregateInput
   _min?: Prisma.StudentMotivationMinOrderByAggregateInput
@@ -218,11 +240,15 @@ export type StudentMotivationScalarWhereWithAggregatesInput = {
   studentId?: Prisma.StringWithAggregatesFilter<"StudentMotivation"> | string
   optionId?: Prisma.StringNullableWithAggregatesFilter<"StudentMotivation"> | string | null
   textResponse?: Prisma.StringNullableWithAggregatesFilter<"StudentMotivation"> | string | null
+  createdAt?: Prisma.DateTimeWithAggregatesFilter<"StudentMotivation"> | Date | string
+  updatedAt?: Prisma.DateTimeWithAggregatesFilter<"StudentMotivation"> | Date | string
 }
 
 export type StudentMotivationCreateInput = {
   id?: string
   textResponse?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
   student: Prisma.StudentCreateNestedOneWithoutMotivationsInput
   option?: Prisma.OptionMotivationCreateNestedOneWithoutStudentInput
 }
@@ -232,11 +258,15 @@ export type StudentMotivationUncheckedCreateInput = {
   studentId: string
   optionId?: string | null
   textResponse?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type StudentMotivationUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   textResponse?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   student?: Prisma.StudentUpdateOneRequiredWithoutMotivationsNestedInput
   option?: Prisma.OptionMotivationUpdateOneWithoutStudentNestedInput
 }
@@ -246,6 +276,8 @@ export type StudentMotivationUncheckedUpdateInput = {
   studentId?: Prisma.StringFieldUpdateOperationsInput | string
   optionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   textResponse?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type StudentMotivationCreateManyInput = {
@@ -253,11 +285,15 @@ export type StudentMotivationCreateManyInput = {
   studentId: string
   optionId?: string | null
   textResponse?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type StudentMotivationUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   textResponse?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type StudentMotivationUncheckedUpdateManyInput = {
@@ -265,6 +301,8 @@ export type StudentMotivationUncheckedUpdateManyInput = {
   studentId?: Prisma.StringFieldUpdateOperationsInput | string
   optionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   textResponse?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type StudentMotivationListRelationFilter = {
@@ -287,6 +325,8 @@ export type StudentMotivationCountOrderByAggregateInput = {
   studentId?: Prisma.SortOrder
   optionId?: Prisma.SortOrder
   textResponse?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
 }
 
 export type StudentMotivationMaxOrderByAggregateInput = {
@@ -294,6 +334,8 @@ export type StudentMotivationMaxOrderByAggregateInput = {
   studentId?: Prisma.SortOrder
   optionId?: Prisma.SortOrder
   textResponse?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
 }
 
 export type StudentMotivationMinOrderByAggregateInput = {
@@ -301,6 +343,8 @@ export type StudentMotivationMinOrderByAggregateInput = {
   studentId?: Prisma.SortOrder
   optionId?: Prisma.SortOrder
   textResponse?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
 }
 
 export type StudentMotivationCreateNestedManyWithoutStudentInput = {
@@ -390,6 +434,8 @@ export type StudentMotivationUncheckedUpdateManyWithoutOptionNestedInput = {
 export type StudentMotivationCreateWithoutStudentInput = {
   id?: string
   textResponse?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
   option?: Prisma.OptionMotivationCreateNestedOneWithoutStudentInput
 }
 
@@ -397,6 +443,8 @@ export type StudentMotivationUncheckedCreateWithoutStudentInput = {
   id?: string
   optionId?: string | null
   textResponse?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type StudentMotivationCreateOrConnectWithoutStudentInput = {
@@ -433,11 +481,15 @@ export type StudentMotivationScalarWhereInput = {
   studentId?: Prisma.StringFilter<"StudentMotivation"> | string
   optionId?: Prisma.StringNullableFilter<"StudentMotivation"> | string | null
   textResponse?: Prisma.StringNullableFilter<"StudentMotivation"> | string | null
+  createdAt?: Prisma.DateTimeFilter<"StudentMotivation"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"StudentMotivation"> | Date | string
 }
 
 export type StudentMotivationCreateWithoutOptionInput = {
   id?: string
   textResponse?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
   student: Prisma.StudentCreateNestedOneWithoutMotivationsInput
 }
 
@@ -445,6 +497,8 @@ export type StudentMotivationUncheckedCreateWithoutOptionInput = {
   id?: string
   studentId: string
   textResponse?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type StudentMotivationCreateOrConnectWithoutOptionInput = {
@@ -477,11 +531,15 @@ export type StudentMotivationCreateManyStudentInput = {
   id?: string
   optionId?: string | null
   textResponse?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type StudentMotivationUpdateWithoutStudentInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   textResponse?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   option?: Prisma.OptionMotivationUpdateOneWithoutStudentNestedInput
 }
 
@@ -489,23 +547,31 @@ export type StudentMotivationUncheckedUpdateWithoutStudentInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   optionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   textResponse?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type StudentMotivationUncheckedUpdateManyWithoutStudentInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   optionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   textResponse?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type StudentMotivationCreateManyOptionInput = {
   id?: string
   studentId: string
   textResponse?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type StudentMotivationUpdateWithoutOptionInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   textResponse?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   student?: Prisma.StudentUpdateOneRequiredWithoutMotivationsNestedInput
 }
 
@@ -513,12 +579,16 @@ export type StudentMotivationUncheckedUpdateWithoutOptionInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   studentId?: Prisma.StringFieldUpdateOperationsInput | string
   textResponse?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type StudentMotivationUncheckedUpdateManyWithoutOptionInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   studentId?: Prisma.StringFieldUpdateOperationsInput | string
   textResponse?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 
@@ -528,6 +598,8 @@ export type StudentMotivationSelect<ExtArgs extends runtime.Types.Extensions.Int
   studentId?: boolean
   optionId?: boolean
   textResponse?: boolean
+  createdAt?: boolean
+  updatedAt?: boolean
   student?: boolean | Prisma.StudentDefaultArgs<ExtArgs>
   option?: boolean | Prisma.StudentMotivation$optionArgs<ExtArgs>
 }, ExtArgs["result"]["studentMotivation"]>
@@ -537,6 +609,8 @@ export type StudentMotivationSelectCreateManyAndReturn<ExtArgs extends runtime.T
   studentId?: boolean
   optionId?: boolean
   textResponse?: boolean
+  createdAt?: boolean
+  updatedAt?: boolean
   student?: boolean | Prisma.StudentDefaultArgs<ExtArgs>
   option?: boolean | Prisma.StudentMotivation$optionArgs<ExtArgs>
 }, ExtArgs["result"]["studentMotivation"]>
@@ -546,6 +620,8 @@ export type StudentMotivationSelectUpdateManyAndReturn<ExtArgs extends runtime.T
   studentId?: boolean
   optionId?: boolean
   textResponse?: boolean
+  createdAt?: boolean
+  updatedAt?: boolean
   student?: boolean | Prisma.StudentDefaultArgs<ExtArgs>
   option?: boolean | Prisma.StudentMotivation$optionArgs<ExtArgs>
 }, ExtArgs["result"]["studentMotivation"]>
@@ -555,9 +631,11 @@ export type StudentMotivationSelectScalar = {
   studentId?: boolean
   optionId?: boolean
   textResponse?: boolean
+  createdAt?: boolean
+  updatedAt?: boolean
 }
 
-export type StudentMotivationOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "studentId" | "optionId" | "textResponse", ExtArgs["result"]["studentMotivation"]>
+export type StudentMotivationOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "studentId" | "optionId" | "textResponse" | "createdAt" | "updatedAt", ExtArgs["result"]["studentMotivation"]>
 export type StudentMotivationInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   student?: boolean | Prisma.StudentDefaultArgs<ExtArgs>
   option?: boolean | Prisma.StudentMotivation$optionArgs<ExtArgs>
@@ -582,6 +660,8 @@ export type $StudentMotivationPayload<ExtArgs extends runtime.Types.Extensions.I
     studentId: string
     optionId: string | null
     textResponse: string | null
+    createdAt: Date
+    updatedAt: Date
   }, ExtArgs["result"]["studentMotivation"]>
   composites: {}
 }
@@ -1011,6 +1091,8 @@ export interface StudentMotivationFieldRefs {
   readonly studentId: Prisma.FieldRef<"StudentMotivation", 'String'>
   readonly optionId: Prisma.FieldRef<"StudentMotivation", 'String'>
   readonly textResponse: Prisma.FieldRef<"StudentMotivation", 'String'>
+  readonly createdAt: Prisma.FieldRef<"StudentMotivation", 'DateTime'>
+  readonly updatedAt: Prisma.FieldRef<"StudentMotivation", 'DateTime'>
 }
     
 

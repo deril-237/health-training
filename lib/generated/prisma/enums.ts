@@ -19,8 +19,6 @@ export type WaveStatus = (typeof WaveStatus)[keyof typeof WaveStatus]
 
 
 export const InscriptionStatus = {
-  DRAFT: 'DRAFT',
-  EMAIL_PENDING: 'EMAIL_PENDING',
   SUBMITTED: 'SUBMITTED',
   ACCEPTED: 'ACCEPTED',
   REJECTED: 'REJECTED'

@@ -27,22 +27,34 @@ export type AggregateInscription = {
 export type InscriptionMinAggregateOutputType = {
   id: string | null
   studentId: string | null
-  trainingProgramId: string | null
+  waveId: string | null
+  status: $Enums.InscriptionStatus | null
   modality: $Enums.ModalityOption | null
+  reasonRejected: string | null
+  createdAt: Date | null
+  updatedAt: Date | null
 }
 
 export type InscriptionMaxAggregateOutputType = {
   id: string | null
   studentId: string | null
-  trainingProgramId: string | null
+  waveId: string | null
+  status: $Enums.InscriptionStatus | null
   modality: $Enums.ModalityOption | null
+  reasonRejected: string | null
+  createdAt: Date | null
+  updatedAt: Date | null
 }
 
 export type InscriptionCountAggregateOutputType = {
   id: number
   studentId: number
-  trainingProgramId: number
+  waveId: number
+  status: number
   modality: number
+  reasonRejected: number
+  createdAt: number
+  updatedAt: number
   _all: number
 }
 
@@ -50,22 +62,34 @@ export type InscriptionCountAggregateOutputType = {
 export type InscriptionMinAggregateInputType = {
   id?: true
   studentId?: true
-  trainingProgramId?: true
+  waveId?: true
+  status?: true
   modality?: true
+  reasonRejected?: true
+  createdAt?: true
+  updatedAt?: true
 }
 
 export type InscriptionMaxAggregateInputType = {
   id?: true
   studentId?: true
-  trainingProgramId?: true
+  waveId?: true
+  status?: true
   modality?: true
+  reasonRejected?: true
+  createdAt?: true
+  updatedAt?: true
 }
 
 export type InscriptionCountAggregateInputType = {
   id?: true
   studentId?: true
-  trainingProgramId?: true
+  waveId?: true
+  status?: true
   modality?: true
+  reasonRejected?: true
+  createdAt?: true
+  updatedAt?: true
   _all?: true
 }
 
@@ -144,8 +168,12 @@ export type InscriptionGroupByArgs<ExtArgs extends runtime.Types.Extensions.Inte
 export type InscriptionGroupByOutputType = {
   id: string
   studentId: string
-  trainingProgramId: string
+  waveId: string
+  status: $Enums.InscriptionStatus
   modality: $Enums.ModalityOption
+  reasonRejected: string | null
+  createdAt: Date
+  updatedAt: Date
   _count: InscriptionCountAggregateOutputType | null
   _min: InscriptionMinAggregateOutputType | null
   _max: InscriptionMaxAggregateOutputType | null
@@ -172,39 +200,55 @@ export type InscriptionWhereInput = {
   NOT?: Prisma.InscriptionWhereInput | Prisma.InscriptionWhereInput[]
   id?: Prisma.StringFilter<"Inscription"> | string
   studentId?: Prisma.StringFilter<"Inscription"> | string
-  trainingProgramId?: Prisma.StringFilter<"Inscription"> | string
+  waveId?: Prisma.StringFilter<"Inscription"> | string
+  status?: Prisma.EnumInscriptionStatusFilter<"Inscription"> | $Enums.InscriptionStatus
   modality?: Prisma.EnumModalityOptionFilter<"Inscription"> | $Enums.ModalityOption
+  reasonRejected?: Prisma.StringNullableFilter<"Inscription"> | string | null
+  createdAt?: Prisma.DateTimeFilter<"Inscription"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"Inscription"> | Date | string
   student?: Prisma.XOR<Prisma.StudentScalarRelationFilter, Prisma.StudentWhereInput>
-  trainingProgram?: Prisma.XOR<Prisma.TrainingProgramScalarRelationFilter, Prisma.TrainingProgramWhereInput>
+  wave?: Prisma.XOR<Prisma.WaveScalarRelationFilter, Prisma.WaveWhereInput>
 }
 
 export type InscriptionOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   studentId?: Prisma.SortOrder
-  trainingProgramId?: Prisma.SortOrder
+  waveId?: Prisma.SortOrder
+  status?: Prisma.SortOrder
   modality?: Prisma.SortOrder
+  reasonRejected?: Prisma.SortOrderInput | Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
   student?: Prisma.StudentOrderByWithRelationInput
-  trainingProgram?: Prisma.TrainingProgramOrderByWithRelationInput
+  wave?: Prisma.WaveOrderByWithRelationInput
 }
 
 export type InscriptionWhereUniqueInput = Prisma.AtLeast<{
   id?: string
-  studentId_trainingProgramId?: Prisma.InscriptionStudentIdTrainingProgramIdCompoundUniqueInput
+  studentId_waveId?: Prisma.InscriptionStudentIdWaveIdCompoundUniqueInput
   AND?: Prisma.InscriptionWhereInput | Prisma.InscriptionWhereInput[]
   OR?: Prisma.InscriptionWhereInput[]
   NOT?: Prisma.InscriptionWhereInput | Prisma.InscriptionWhereInput[]
   studentId?: Prisma.StringFilter<"Inscription"> | string
-  trainingProgramId?: Prisma.StringFilter<"Inscription"> | string
+  waveId?: Prisma.StringFilter<"Inscription"> | string
+  status?: Prisma.EnumInscriptionStatusFilter<"Inscription"> | $Enums.InscriptionStatus
   modality?: Prisma.EnumModalityOptionFilter<"Inscription"> | $Enums.ModalityOption
+  reasonRejected?: Prisma.StringNullableFilter<"Inscription"> | string | null
+  createdAt?: Prisma.DateTimeFilter<"Inscription"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"Inscription"> | Date | string
   student?: Prisma.XOR<Prisma.StudentScalarRelationFilter, Prisma.StudentWhereInput>
-  trainingProgram?: Prisma.XOR<Prisma.TrainingProgramScalarRelationFilter, Prisma.TrainingProgramWhereInput>
-}, "id" | "studentId_trainingProgramId">
+  wave?: Prisma.XOR<Prisma.WaveScalarRelationFilter, Prisma.WaveWhereInput>
+}, "id" | "studentId_waveId">
 
 export type InscriptionOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   studentId?: Prisma.SortOrder
-  trainingProgramId?: Prisma.SortOrder
+  waveId?: Prisma.SortOrder
+  status?: Prisma.SortOrder
   modality?: Prisma.SortOrder
+  reasonRejected?: Prisma.SortOrderInput | Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
   _count?: Prisma.InscriptionCountOrderByAggregateInput
   _max?: Prisma.InscriptionMaxOrderByAggregateInput
   _min?: Prisma.InscriptionMinOrderByAggregateInput
@@ -216,55 +260,87 @@ export type InscriptionScalarWhereWithAggregatesInput = {
   NOT?: Prisma.InscriptionScalarWhereWithAggregatesInput | Prisma.InscriptionScalarWhereWithAggregatesInput[]
   id?: Prisma.StringWithAggregatesFilter<"Inscription"> | string
   studentId?: Prisma.StringWithAggregatesFilter<"Inscription"> | string
-  trainingProgramId?: Prisma.StringWithAggregatesFilter<"Inscription"> | string
+  waveId?: Prisma.StringWithAggregatesFilter<"Inscription"> | string
+  status?: Prisma.EnumInscriptionStatusWithAggregatesFilter<"Inscription"> | $Enums.InscriptionStatus
   modality?: Prisma.EnumModalityOptionWithAggregatesFilter<"Inscription"> | $Enums.ModalityOption
+  reasonRejected?: Prisma.StringNullableWithAggregatesFilter<"Inscription"> | string | null
+  createdAt?: Prisma.DateTimeWithAggregatesFilter<"Inscription"> | Date | string
+  updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Inscription"> | Date | string
 }
 
 export type InscriptionCreateInput = {
   id?: string
+  status: $Enums.InscriptionStatus
   modality: $Enums.ModalityOption
+  reasonRejected?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
   student: Prisma.StudentCreateNestedOneWithoutInscriptionsInput
-  trainingProgram: Prisma.TrainingProgramCreateNestedOneWithoutInscriptionsInput
+  wave: Prisma.WaveCreateNestedOneWithoutInscriptionsInput
 }
 
 export type InscriptionUncheckedCreateInput = {
   id?: string
   studentId: string
-  trainingProgramId: string
+  waveId: string
+  status: $Enums.InscriptionStatus
   modality: $Enums.ModalityOption
+  reasonRejected?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type InscriptionUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumInscriptionStatusFieldUpdateOperationsInput | $Enums.InscriptionStatus
   modality?: Prisma.EnumModalityOptionFieldUpdateOperationsInput | $Enums.ModalityOption
+  reasonRejected?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   student?: Prisma.StudentUpdateOneRequiredWithoutInscriptionsNestedInput
-  trainingProgram?: Prisma.TrainingProgramUpdateOneRequiredWithoutInscriptionsNestedInput
+  wave?: Prisma.WaveUpdateOneRequiredWithoutInscriptionsNestedInput
 }
 
 export type InscriptionUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   studentId?: Prisma.StringFieldUpdateOperationsInput | string
-  trainingProgramId?: Prisma.StringFieldUpdateOperationsInput | string
+  waveId?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumInscriptionStatusFieldUpdateOperationsInput | $Enums.InscriptionStatus
   modality?: Prisma.EnumModalityOptionFieldUpdateOperationsInput | $Enums.ModalityOption
+  reasonRejected?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type InscriptionCreateManyInput = {
   id?: string
   studentId: string
-  trainingProgramId: string
+  waveId: string
+  status: $Enums.InscriptionStatus
   modality: $Enums.ModalityOption
+  reasonRejected?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type InscriptionUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumInscriptionStatusFieldUpdateOperationsInput | $Enums.InscriptionStatus
   modality?: Prisma.EnumModalityOptionFieldUpdateOperationsInput | $Enums.ModalityOption
+  reasonRejected?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type InscriptionUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   studentId?: Prisma.StringFieldUpdateOperationsInput | string
-  trainingProgramId?: Prisma.StringFieldUpdateOperationsInput | string
+  waveId?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumInscriptionStatusFieldUpdateOperationsInput | $Enums.InscriptionStatus
   modality?: Prisma.EnumModalityOptionFieldUpdateOperationsInput | $Enums.ModalityOption
+  reasonRejected?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type InscriptionListRelationFilter = {
@@ -277,71 +353,83 @@ export type InscriptionOrderByRelationAggregateInput = {
   _count?: Prisma.SortOrder
 }
 
-export type InscriptionStudentIdTrainingProgramIdCompoundUniqueInput = {
+export type InscriptionStudentIdWaveIdCompoundUniqueInput = {
   studentId: string
-  trainingProgramId: string
+  waveId: string
 }
 
 export type InscriptionCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   studentId?: Prisma.SortOrder
-  trainingProgramId?: Prisma.SortOrder
+  waveId?: Prisma.SortOrder
+  status?: Prisma.SortOrder
   modality?: Prisma.SortOrder
+  reasonRejected?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
 }
 
 export type InscriptionMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   studentId?: Prisma.SortOrder
-  trainingProgramId?: Prisma.SortOrder
+  waveId?: Prisma.SortOrder
+  status?: Prisma.SortOrder
   modality?: Prisma.SortOrder
+  reasonRejected?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
 }
 
 export type InscriptionMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   studentId?: Prisma.SortOrder
-  trainingProgramId?: Prisma.SortOrder
+  waveId?: Prisma.SortOrder
+  status?: Prisma.SortOrder
   modality?: Prisma.SortOrder
+  reasonRejected?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
 }
 
-export type InscriptionCreateNestedManyWithoutTrainingProgramInput = {
-  create?: Prisma.XOR<Prisma.InscriptionCreateWithoutTrainingProgramInput, Prisma.InscriptionUncheckedCreateWithoutTrainingProgramInput> | Prisma.InscriptionCreateWithoutTrainingProgramInput[] | Prisma.InscriptionUncheckedCreateWithoutTrainingProgramInput[]
-  connectOrCreate?: Prisma.InscriptionCreateOrConnectWithoutTrainingProgramInput | Prisma.InscriptionCreateOrConnectWithoutTrainingProgramInput[]
-  createMany?: Prisma.InscriptionCreateManyTrainingProgramInputEnvelope
+export type InscriptionCreateNestedManyWithoutWaveInput = {
+  create?: Prisma.XOR<Prisma.InscriptionCreateWithoutWaveInput, Prisma.InscriptionUncheckedCreateWithoutWaveInput> | Prisma.InscriptionCreateWithoutWaveInput[] | Prisma.InscriptionUncheckedCreateWithoutWaveInput[]
+  connectOrCreate?: Prisma.InscriptionCreateOrConnectWithoutWaveInput | Prisma.InscriptionCreateOrConnectWithoutWaveInput[]
+  createMany?: Prisma.InscriptionCreateManyWaveInputEnvelope
   connect?: Prisma.InscriptionWhereUniqueInput | Prisma.InscriptionWhereUniqueInput[]
 }
 
-export type InscriptionUncheckedCreateNestedManyWithoutTrainingProgramInput = {
-  create?: Prisma.XOR<Prisma.InscriptionCreateWithoutTrainingProgramInput, Prisma.InscriptionUncheckedCreateWithoutTrainingProgramInput> | Prisma.InscriptionCreateWithoutTrainingProgramInput[] | Prisma.InscriptionUncheckedCreateWithoutTrainingProgramInput[]
-  connectOrCreate?: Prisma.InscriptionCreateOrConnectWithoutTrainingProgramInput | Prisma.InscriptionCreateOrConnectWithoutTrainingProgramInput[]
-  createMany?: Prisma.InscriptionCreateManyTrainingProgramInputEnvelope
+export type InscriptionUncheckedCreateNestedManyWithoutWaveInput = {
+  create?: Prisma.XOR<Prisma.InscriptionCreateWithoutWaveInput, Prisma.InscriptionUncheckedCreateWithoutWaveInput> | Prisma.InscriptionCreateWithoutWaveInput[] | Prisma.InscriptionUncheckedCreateWithoutWaveInput[]
+  connectOrCreate?: Prisma.InscriptionCreateOrConnectWithoutWaveInput | Prisma.InscriptionCreateOrConnectWithoutWaveInput[]
+  createMany?: Prisma.InscriptionCreateManyWaveInputEnvelope
   connect?: Prisma.InscriptionWhereUniqueInput | Prisma.InscriptionWhereUniqueInput[]
 }
 
-export type InscriptionUpdateManyWithoutTrainingProgramNestedInput = {
-  create?: Prisma.XOR<Prisma.InscriptionCreateWithoutTrainingProgramInput, Prisma.InscriptionUncheckedCreateWithoutTrainingProgramInput> | Prisma.InscriptionCreateWithoutTrainingProgramInput[] | Prisma.InscriptionUncheckedCreateWithoutTrainingProgramInput[]
-  connectOrCreate?: Prisma.InscriptionCreateOrConnectWithoutTrainingProgramInput | Prisma.InscriptionCreateOrConnectWithoutTrainingProgramInput[]
-  upsert?: Prisma.InscriptionUpsertWithWhereUniqueWithoutTrainingProgramInput | Prisma.InscriptionUpsertWithWhereUniqueWithoutTrainingProgramInput[]
-  createMany?: Prisma.InscriptionCreateManyTrainingProgramInputEnvelope
+export type InscriptionUpdateManyWithoutWaveNestedInput = {
+  create?: Prisma.XOR<Prisma.InscriptionCreateWithoutWaveInput, Prisma.InscriptionUncheckedCreateWithoutWaveInput> | Prisma.InscriptionCreateWithoutWaveInput[] | Prisma.InscriptionUncheckedCreateWithoutWaveInput[]
+  connectOrCreate?: Prisma.InscriptionCreateOrConnectWithoutWaveInput | Prisma.InscriptionCreateOrConnectWithoutWaveInput[]
+  upsert?: Prisma.InscriptionUpsertWithWhereUniqueWithoutWaveInput | Prisma.InscriptionUpsertWithWhereUniqueWithoutWaveInput[]
+  createMany?: Prisma.InscriptionCreateManyWaveInputEnvelope
   set?: Prisma.InscriptionWhereUniqueInput | Prisma.InscriptionWhereUniqueInput[]
   disconnect?: Prisma.InscriptionWhereUniqueInput | Prisma.InscriptionWhereUniqueInput[]
   delete?: Prisma.InscriptionWhereUniqueInput | Prisma.InscriptionWhereUniqueInput[]
   connect?: Prisma.InscriptionWhereUniqueInput | Prisma.InscriptionWhereUniqueInput[]
-  update?: Prisma.InscriptionUpdateWithWhereUniqueWithoutTrainingProgramInput | Prisma.InscriptionUpdateWithWhereUniqueWithoutTrainingProgramInput[]
-  updateMany?: Prisma.InscriptionUpdateManyWithWhereWithoutTrainingProgramInput | Prisma.InscriptionUpdateManyWithWhereWithoutTrainingProgramInput[]
+  update?: Prisma.InscriptionUpdateWithWhereUniqueWithoutWaveInput | Prisma.InscriptionUpdateWithWhereUniqueWithoutWaveInput[]
+  updateMany?: Prisma.InscriptionUpdateManyWithWhereWithoutWaveInput | Prisma.InscriptionUpdateManyWithWhereWithoutWaveInput[]
   deleteMany?: Prisma.InscriptionScalarWhereInput | Prisma.InscriptionScalarWhereInput[]
 }
 
-export type InscriptionUncheckedUpdateManyWithoutTrainingProgramNestedInput = {
-  create?: Prisma.XOR<Prisma.InscriptionCreateWithoutTrainingProgramInput, Prisma.InscriptionUncheckedCreateWithoutTrainingProgramInput> | Prisma.InscriptionCreateWithoutTrainingProgramInput[] | Prisma.InscriptionUncheckedCreateWithoutTrainingProgramInput[]
-  connectOrCreate?: Prisma.InscriptionCreateOrConnectWithoutTrainingProgramInput | Prisma.InscriptionCreateOrConnectWithoutTrainingProgramInput[]
-  upsert?: Prisma.InscriptionUpsertWithWhereUniqueWithoutTrainingProgramInput | Prisma.InscriptionUpsertWithWhereUniqueWithoutTrainingProgramInput[]
-  createMany?: Prisma.InscriptionCreateManyTrainingProgramInputEnvelope
+export type InscriptionUncheckedUpdateManyWithoutWaveNestedInput = {
+  create?: Prisma.XOR<Prisma.InscriptionCreateWithoutWaveInput, Prisma.InscriptionUncheckedCreateWithoutWaveInput> | Prisma.InscriptionCreateWithoutWaveInput[] | Prisma.InscriptionUncheckedCreateWithoutWaveInput[]
+  connectOrCreate?: Prisma.InscriptionCreateOrConnectWithoutWaveInput | Prisma.InscriptionCreateOrConnectWithoutWaveInput[]
+  upsert?: Prisma.InscriptionUpsertWithWhereUniqueWithoutWaveInput | Prisma.InscriptionUpsertWithWhereUniqueWithoutWaveInput[]
+  createMany?: Prisma.InscriptionCreateManyWaveInputEnvelope
   set?: Prisma.InscriptionWhereUniqueInput | Prisma.InscriptionWhereUniqueInput[]
   disconnect?: Prisma.InscriptionWhereUniqueInput | Prisma.InscriptionWhereUniqueInput[]
   delete?: Prisma.InscriptionWhereUniqueInput | Prisma.InscriptionWhereUniqueInput[]
   connect?: Prisma.InscriptionWhereUniqueInput | Prisma.InscriptionWhereUniqueInput[]
-  update?: Prisma.InscriptionUpdateWithWhereUniqueWithoutTrainingProgramInput | Prisma.InscriptionUpdateWithWhereUniqueWithoutTrainingProgramInput[]
-  updateMany?: Prisma.InscriptionUpdateManyWithWhereWithoutTrainingProgramInput | Prisma.InscriptionUpdateManyWithWhereWithoutTrainingProgramInput[]
+  update?: Prisma.InscriptionUpdateWithWhereUniqueWithoutWaveInput | Prisma.InscriptionUpdateWithWhereUniqueWithoutWaveInput[]
+  updateMany?: Prisma.InscriptionUpdateManyWithWhereWithoutWaveInput | Prisma.InscriptionUpdateManyWithWhereWithoutWaveInput[]
   deleteMany?: Prisma.InscriptionScalarWhereInput | Prisma.InscriptionScalarWhereInput[]
 }
 
@@ -387,46 +475,58 @@ export type InscriptionUncheckedUpdateManyWithoutStudentNestedInput = {
   deleteMany?: Prisma.InscriptionScalarWhereInput | Prisma.InscriptionScalarWhereInput[]
 }
 
+export type EnumInscriptionStatusFieldUpdateOperationsInput = {
+  set?: $Enums.InscriptionStatus
+}
+
 export type EnumModalityOptionFieldUpdateOperationsInput = {
   set?: $Enums.ModalityOption
 }
 
-export type InscriptionCreateWithoutTrainingProgramInput = {
+export type InscriptionCreateWithoutWaveInput = {
   id?: string
+  status: $Enums.InscriptionStatus
   modality: $Enums.ModalityOption
+  reasonRejected?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
   student: Prisma.StudentCreateNestedOneWithoutInscriptionsInput
 }
 
-export type InscriptionUncheckedCreateWithoutTrainingProgramInput = {
+export type InscriptionUncheckedCreateWithoutWaveInput = {
   id?: string
   studentId: string
+  status: $Enums.InscriptionStatus
   modality: $Enums.ModalityOption
+  reasonRejected?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
-export type InscriptionCreateOrConnectWithoutTrainingProgramInput = {
+export type InscriptionCreateOrConnectWithoutWaveInput = {
   where: Prisma.InscriptionWhereUniqueInput
-  create: Prisma.XOR<Prisma.InscriptionCreateWithoutTrainingProgramInput, Prisma.InscriptionUncheckedCreateWithoutTrainingProgramInput>
+  create: Prisma.XOR<Prisma.InscriptionCreateWithoutWaveInput, Prisma.InscriptionUncheckedCreateWithoutWaveInput>
 }
 
-export type InscriptionCreateManyTrainingProgramInputEnvelope = {
-  data: Prisma.InscriptionCreateManyTrainingProgramInput | Prisma.InscriptionCreateManyTrainingProgramInput[]
+export type InscriptionCreateManyWaveInputEnvelope = {
+  data: Prisma.InscriptionCreateManyWaveInput | Prisma.InscriptionCreateManyWaveInput[]
   skipDuplicates?: boolean
 }
 
-export type InscriptionUpsertWithWhereUniqueWithoutTrainingProgramInput = {
+export type InscriptionUpsertWithWhereUniqueWithoutWaveInput = {
   where: Prisma.InscriptionWhereUniqueInput
-  update: Prisma.XOR<Prisma.InscriptionUpdateWithoutTrainingProgramInput, Prisma.InscriptionUncheckedUpdateWithoutTrainingProgramInput>
-  create: Prisma.XOR<Prisma.InscriptionCreateWithoutTrainingProgramInput, Prisma.InscriptionUncheckedCreateWithoutTrainingProgramInput>
+  update: Prisma.XOR<Prisma.InscriptionUpdateWithoutWaveInput, Prisma.InscriptionUncheckedUpdateWithoutWaveInput>
+  create: Prisma.XOR<Prisma.InscriptionCreateWithoutWaveInput, Prisma.InscriptionUncheckedCreateWithoutWaveInput>
 }
 
-export type InscriptionUpdateWithWhereUniqueWithoutTrainingProgramInput = {
+export type InscriptionUpdateWithWhereUniqueWithoutWaveInput = {
   where: Prisma.InscriptionWhereUniqueInput
-  data: Prisma.XOR<Prisma.InscriptionUpdateWithoutTrainingProgramInput, Prisma.InscriptionUncheckedUpdateWithoutTrainingProgramInput>
+  data: Prisma.XOR<Prisma.InscriptionUpdateWithoutWaveInput, Prisma.InscriptionUncheckedUpdateWithoutWaveInput>
 }
 
-export type InscriptionUpdateManyWithWhereWithoutTrainingProgramInput = {
+export type InscriptionUpdateManyWithWhereWithoutWaveInput = {
   where: Prisma.InscriptionScalarWhereInput
-  data: Prisma.XOR<Prisma.InscriptionUpdateManyMutationInput, Prisma.InscriptionUncheckedUpdateManyWithoutTrainingProgramInput>
+  data: Prisma.XOR<Prisma.InscriptionUpdateManyMutationInput, Prisma.InscriptionUncheckedUpdateManyWithoutWaveInput>
 }
 
 export type InscriptionScalarWhereInput = {
@@ -435,20 +535,32 @@ export type InscriptionScalarWhereInput = {
   NOT?: Prisma.InscriptionScalarWhereInput | Prisma.InscriptionScalarWhereInput[]
   id?: Prisma.StringFilter<"Inscription"> | string
   studentId?: Prisma.StringFilter<"Inscription"> | string
-  trainingProgramId?: Prisma.StringFilter<"Inscription"> | string
+  waveId?: Prisma.StringFilter<"Inscription"> | string
+  status?: Prisma.EnumInscriptionStatusFilter<"Inscription"> | $Enums.InscriptionStatus
   modality?: Prisma.EnumModalityOptionFilter<"Inscription"> | $Enums.ModalityOption
+  reasonRejected?: Prisma.StringNullableFilter<"Inscription"> | string | null
+  createdAt?: Prisma.DateTimeFilter<"Inscription"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"Inscription"> | Date | string
 }
 
 export type InscriptionCreateWithoutStudentInput = {
   id?: string
+  status: $Enums.InscriptionStatus
   modality: $Enums.ModalityOption
-  trainingProgram: Prisma.TrainingProgramCreateNestedOneWithoutInscriptionsInput
+  reasonRejected?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  wave: Prisma.WaveCreateNestedOneWithoutInscriptionsInput
 }
 
 export type InscriptionUncheckedCreateWithoutStudentInput = {
   id?: string
-  trainingProgramId: string
+  waveId: string
+  status: $Enums.InscriptionStatus
   modality: $Enums.ModalityOption
+  reasonRejected?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type InscriptionCreateOrConnectWithoutStudentInput = {
@@ -477,52 +589,84 @@ export type InscriptionUpdateManyWithWhereWithoutStudentInput = {
   data: Prisma.XOR<Prisma.InscriptionUpdateManyMutationInput, Prisma.InscriptionUncheckedUpdateManyWithoutStudentInput>
 }
 
-export type InscriptionCreateManyTrainingProgramInput = {
+export type InscriptionCreateManyWaveInput = {
   id?: string
   studentId: string
+  status: $Enums.InscriptionStatus
   modality: $Enums.ModalityOption
+  reasonRejected?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
-export type InscriptionUpdateWithoutTrainingProgramInput = {
+export type InscriptionUpdateWithoutWaveInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumInscriptionStatusFieldUpdateOperationsInput | $Enums.InscriptionStatus
   modality?: Prisma.EnumModalityOptionFieldUpdateOperationsInput | $Enums.ModalityOption
+  reasonRejected?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   student?: Prisma.StudentUpdateOneRequiredWithoutInscriptionsNestedInput
 }
 
-export type InscriptionUncheckedUpdateWithoutTrainingProgramInput = {
+export type InscriptionUncheckedUpdateWithoutWaveInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   studentId?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumInscriptionStatusFieldUpdateOperationsInput | $Enums.InscriptionStatus
   modality?: Prisma.EnumModalityOptionFieldUpdateOperationsInput | $Enums.ModalityOption
+  reasonRejected?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
-export type InscriptionUncheckedUpdateManyWithoutTrainingProgramInput = {
+export type InscriptionUncheckedUpdateManyWithoutWaveInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   studentId?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumInscriptionStatusFieldUpdateOperationsInput | $Enums.InscriptionStatus
   modality?: Prisma.EnumModalityOptionFieldUpdateOperationsInput | $Enums.ModalityOption
+  reasonRejected?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type InscriptionCreateManyStudentInput = {
   id?: string
-  trainingProgramId: string
+  waveId: string
+  status: $Enums.InscriptionStatus
   modality: $Enums.ModalityOption
+  reasonRejected?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type InscriptionUpdateWithoutStudentInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumInscriptionStatusFieldUpdateOperationsInput | $Enums.InscriptionStatus
   modality?: Prisma.EnumModalityOptionFieldUpdateOperationsInput | $Enums.ModalityOption
-  trainingProgram?: Prisma.TrainingProgramUpdateOneRequiredWithoutInscriptionsNestedInput
+  reasonRejected?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  wave?: Prisma.WaveUpdateOneRequiredWithoutInscriptionsNestedInput
 }
 
 export type InscriptionUncheckedUpdateWithoutStudentInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  trainingProgramId?: Prisma.StringFieldUpdateOperationsInput | string
+  waveId?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumInscriptionStatusFieldUpdateOperationsInput | $Enums.InscriptionStatus
   modality?: Prisma.EnumModalityOptionFieldUpdateOperationsInput | $Enums.ModalityOption
+  reasonRejected?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type InscriptionUncheckedUpdateManyWithoutStudentInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  trainingProgramId?: Prisma.StringFieldUpdateOperationsInput | string
+  waveId?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumInscriptionStatusFieldUpdateOperationsInput | $Enums.InscriptionStatus
   modality?: Prisma.EnumModalityOptionFieldUpdateOperationsInput | $Enums.ModalityOption
+  reasonRejected?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 
@@ -530,62 +674,82 @@ export type InscriptionUncheckedUpdateManyWithoutStudentInput = {
 export type InscriptionSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   studentId?: boolean
-  trainingProgramId?: boolean
+  waveId?: boolean
+  status?: boolean
   modality?: boolean
+  reasonRejected?: boolean
+  createdAt?: boolean
+  updatedAt?: boolean
   student?: boolean | Prisma.StudentDefaultArgs<ExtArgs>
-  trainingProgram?: boolean | Prisma.TrainingProgramDefaultArgs<ExtArgs>
+  wave?: boolean | Prisma.WaveDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["inscription"]>
 
 export type InscriptionSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   studentId?: boolean
-  trainingProgramId?: boolean
+  waveId?: boolean
+  status?: boolean
   modality?: boolean
+  reasonRejected?: boolean
+  createdAt?: boolean
+  updatedAt?: boolean
   student?: boolean | Prisma.StudentDefaultArgs<ExtArgs>
-  trainingProgram?: boolean | Prisma.TrainingProgramDefaultArgs<ExtArgs>
+  wave?: boolean | Prisma.WaveDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["inscription"]>
 
 export type InscriptionSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   studentId?: boolean
-  trainingProgramId?: boolean
+  waveId?: boolean
+  status?: boolean
   modality?: boolean
+  reasonRejected?: boolean
+  createdAt?: boolean
+  updatedAt?: boolean
   student?: boolean | Prisma.StudentDefaultArgs<ExtArgs>
-  trainingProgram?: boolean | Prisma.TrainingProgramDefaultArgs<ExtArgs>
+  wave?: boolean | Prisma.WaveDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["inscription"]>
 
 export type InscriptionSelectScalar = {
   id?: boolean
   studentId?: boolean
-  trainingProgramId?: boolean
+  waveId?: boolean
+  status?: boolean
   modality?: boolean
+  reasonRejected?: boolean
+  createdAt?: boolean
+  updatedAt?: boolean
 }
 
-export type InscriptionOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "studentId" | "trainingProgramId" | "modality", ExtArgs["result"]["inscription"]>
+export type InscriptionOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "studentId" | "waveId" | "status" | "modality" | "reasonRejected" | "createdAt" | "updatedAt", ExtArgs["result"]["inscription"]>
 export type InscriptionInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   student?: boolean | Prisma.StudentDefaultArgs<ExtArgs>
-  trainingProgram?: boolean | Prisma.TrainingProgramDefaultArgs<ExtArgs>
+  wave?: boolean | Prisma.WaveDefaultArgs<ExtArgs>
 }
 export type InscriptionIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   student?: boolean | Prisma.StudentDefaultArgs<ExtArgs>
-  trainingProgram?: boolean | Prisma.TrainingProgramDefaultArgs<ExtArgs>
+  wave?: boolean | Prisma.WaveDefaultArgs<ExtArgs>
 }
 export type InscriptionIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   student?: boolean | Prisma.StudentDefaultArgs<ExtArgs>
-  trainingProgram?: boolean | Prisma.TrainingProgramDefaultArgs<ExtArgs>
+  wave?: boolean | Prisma.WaveDefaultArgs<ExtArgs>
 }
 
 export type $InscriptionPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Inscription"
   objects: {
     student: Prisma.$StudentPayload<ExtArgs>
-    trainingProgram: Prisma.$TrainingProgramPayload<ExtArgs>
+    wave: Prisma.$WavePayload<ExtArgs>
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     studentId: string
-    trainingProgramId: string
+    waveId: string
+    status: $Enums.InscriptionStatus
     modality: $Enums.ModalityOption
+    reasonRejected: string | null
+    createdAt: Date
+    updatedAt: Date
   }, ExtArgs["result"]["inscription"]>
   composites: {}
 }
@@ -981,7 +1145,7 @@ readonly fields: InscriptionFieldRefs;
 export interface Prisma__InscriptionClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   student<T extends Prisma.StudentDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.StudentDefaultArgs<ExtArgs>>): Prisma.Prisma__StudentClient<runtime.Types.Result.GetResult<Prisma.$StudentPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-  trainingProgram<T extends Prisma.TrainingProgramDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.TrainingProgramDefaultArgs<ExtArgs>>): Prisma.Prisma__TrainingProgramClient<runtime.Types.Result.GetResult<Prisma.$TrainingProgramPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  wave<T extends Prisma.WaveDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.WaveDefaultArgs<ExtArgs>>): Prisma.Prisma__WaveClient<runtime.Types.Result.GetResult<Prisma.$WavePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1013,8 +1177,12 @@ export interface Prisma__InscriptionClient<T, Null = never, ExtArgs extends runt
 export interface InscriptionFieldRefs {
   readonly id: Prisma.FieldRef<"Inscription", 'String'>
   readonly studentId: Prisma.FieldRef<"Inscription", 'String'>
-  readonly trainingProgramId: Prisma.FieldRef<"Inscription", 'String'>
+  readonly waveId: Prisma.FieldRef<"Inscription", 'String'>
+  readonly status: Prisma.FieldRef<"Inscription", 'InscriptionStatus'>
   readonly modality: Prisma.FieldRef<"Inscription", 'ModalityOption'>
+  readonly reasonRejected: Prisma.FieldRef<"Inscription", 'String'>
+  readonly createdAt: Prisma.FieldRef<"Inscription", 'DateTime'>
+  readonly updatedAt: Prisma.FieldRef<"Inscription", 'DateTime'>
 }
     
 

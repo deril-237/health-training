@@ -163,7 +163,9 @@ export type StudentScalarFieldEnum = (typeof StudentScalarFieldEnum)[keyof typeo
 export const OptionMotivationScalarFieldEnum = {
   id: 'id',
   label: 'label',
-  order: 'order'
+  order: 'order',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 } as const
 
 export type OptionMotivationScalarFieldEnum = (typeof OptionMotivationScalarFieldEnum)[keyof typeof OptionMotivationScalarFieldEnum]
@@ -173,7 +175,9 @@ export const StudentMotivationScalarFieldEnum = {
   id: 'id',
   studentId: 'studentId',
   optionId: 'optionId',
-  textResponse: 'textResponse'
+  textResponse: 'textResponse',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 } as const
 
 export type StudentMotivationScalarFieldEnum = (typeof StudentMotivationScalarFieldEnum)[keyof typeof StudentMotivationScalarFieldEnum]
@@ -182,8 +186,12 @@ export type StudentMotivationScalarFieldEnum = (typeof StudentMotivationScalarFi
 export const InscriptionScalarFieldEnum = {
   id: 'id',
   studentId: 'studentId',
-  trainingProgramId: 'trainingProgramId',
-  modality: 'modality'
+  waveId: 'waveId',
+  status: 'status',
+  modality: 'modality',
+  reasonRejected: 'reasonRejected',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 } as const
 
 export type InscriptionScalarFieldEnum = (typeof InscriptionScalarFieldEnum)[keyof typeof InscriptionScalarFieldEnum]

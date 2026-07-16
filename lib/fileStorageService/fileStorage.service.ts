@@ -1,9 +1,16 @@
 import { IFileStorageService } from "./fileStorage.interface";
 import cloudinary from "./cloudinary";
-import { UploadApiResponse } from "cloudinary";
+import { UpdateApiOptions, UploadApiResponse } from "cloudinary";
+import path from "path";
 
 class FileStorageService implements IFileStorageService {
-  async saveFile(file: File, filename: string): Promise<string> {
+  private rootFolder = "kesmondsTrainingApp";
+  async saveFile(
+    file: File,
+    filename: string,
+    folder?: string,
+    option?: Pick<UploadApiResponse, "resource_type">,
+  ): Promise<string> {
     try {
       const bufferArray = await file.arrayBuffer();
       const fileBuffer = Buffer.from(bufferArray);
@@ -12,8 +19,9 @@ class FileStorageService implements IFileStorageService {
           cloudinary.uploader
             .upload_stream(
               {
-                folder: "formations",
+                folder: path.resolve(this.rootFolder, folder ?? ""),
                 public_id: filename,
+                ...option,
               },
               (error, result) => {
                 if (error) reject(error);

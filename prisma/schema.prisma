@@ -19,6 +19,27 @@ enum WaveStatus {
   OPEN
 }
 
+
+enum InscriptionStatus {
+  // DRAFT
+  // EMAIL_PENDING
+  SUBMITTED
+  ACCEPTED
+  REJECTED 
+
+}
+
+enum ModalityOption {
+  ON_LINE
+  OFF_LINE
+}
+
+
+enum StorageProvider {
+  CLOUDINARY
+}
+
+
 model Program {
   id String @id @default(cuid())
   duration Int @unique
@@ -59,6 +80,7 @@ model TrainingProgram {
   waves Wave[]
   modules Module[]
 
+  @@unique([trainingId,programId])
   @@map("training_program")
 }
 
@@ -71,27 +93,110 @@ model Module {
   file String?  
   trainingProgramId String @map("training_program_id")
   
- createdAt DateTime @default(now()) @map("created_at")
+  createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
 
 
-  trainingProgram TrainingProgram @relation(fields: [trainingProgramId], references: [id])  
+  trainingProgram TrainingProgram @relation(fields: [trainingProgramId], references: [id]) 
+  @@unique([trainingProgramId, position]) 
 
   @@map("modules")
 }
 
 model Wave {
-  id String @id @default(cuid())
-  startDate DateTime @map("start_date") // unique formationProgram
+  id String  @id @default(cuid())
+  startDate DateTime @db.Date @map("start_date") // unique formationProgram
   quota Int 
   status WaveStatus
-  price Float
+  price Decimal @db.Decimal(10,2)
   // numberWave Int @map("number_wave")
   trainingProgramId String @map("training_program_id")
 
+  inscriptions Inscription[]
   trainingProgram TrainingProgram @relation(fields: [trainingProgramId], references: [id])
 
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
   @@map("waves")
+}
+
+model Student {
+  id String @id @default(cuid())
+  numCNIPassport String @map("num_cni_passport")
+  name String
+  secondName String @map("second_name")
+  birthDate DateTime @db.Date @map("birth_date")
+  birthPlace String  @map("birth_place")
+  residence String 
+  email String
+  diplomaUrl String @map("diploma_url")
+  cniPhotoUrl String @map("cni_photo_url")
+  photoUrl String @map("photo_url")
+  motivations StudentMotivation[]
+  inscriptions Inscription[]
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+  
+  @@map("students")
+}
+
+model OptionMotivation {
+  id String @id @default(cuid())
+  label String
+  order Int
+  
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+  student StudentMotivation[]
+}
+
+model StudentMotivation {
+  id String @id @default(cuid())
+  studentId String 
+  optionId String?
+  textResponse String?
+
+  student Student @relation(fields: [studentId], references: [id])
+  option OptionMotivation? @relation(fields: [optionId], references: [id])
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@unique([studentId, optionId])
+  @@map("student_motivations")
+}
+
+model Inscription {
+  id String @id @default(cuid())
+  studentId String 
+  waveId String
+  status InscriptionStatus
+  modality ModalityOption
+  reasonRejected String?
+
+  student Student @relation(fields: [studentId], references: [id])
+  wave Wave @relation(fields: [waveId], references: [id])
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@unique([studentId, waveId])
+  @@map("inscriptions")
+}
+
+
+model FileAsset {
+
+  id String @id @default(cuid())
+  provider StorageProvider
+  key String @unique
+  url String
+  originalName String
+  mimeType String
+  size Int
+  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }

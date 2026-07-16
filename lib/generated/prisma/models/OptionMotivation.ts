@@ -38,18 +38,24 @@ export type OptionMotivationMinAggregateOutputType = {
   id: string | null
   label: string | null
   order: number | null
+  createdAt: Date | null
+  updatedAt: Date | null
 }
 
 export type OptionMotivationMaxAggregateOutputType = {
   id: string | null
   label: string | null
   order: number | null
+  createdAt: Date | null
+  updatedAt: Date | null
 }
 
 export type OptionMotivationCountAggregateOutputType = {
   id: number
   label: number
   order: number
+  createdAt: number
+  updatedAt: number
   _all: number
 }
 
@@ -66,18 +72,24 @@ export type OptionMotivationMinAggregateInputType = {
   id?: true
   label?: true
   order?: true
+  createdAt?: true
+  updatedAt?: true
 }
 
 export type OptionMotivationMaxAggregateInputType = {
   id?: true
   label?: true
   order?: true
+  createdAt?: true
+  updatedAt?: true
 }
 
 export type OptionMotivationCountAggregateInputType = {
   id?: true
   label?: true
   order?: true
+  createdAt?: true
+  updatedAt?: true
   _all?: true
 }
 
@@ -171,6 +183,8 @@ export type OptionMotivationGroupByOutputType = {
   id: string
   label: string
   order: number
+  createdAt: Date
+  updatedAt: Date
   _count: OptionMotivationCountAggregateOutputType | null
   _avg: OptionMotivationAvgAggregateOutputType | null
   _sum: OptionMotivationSumAggregateOutputType | null
@@ -200,6 +214,8 @@ export type OptionMotivationWhereInput = {
   id?: Prisma.StringFilter<"OptionMotivation"> | string
   label?: Prisma.StringFilter<"OptionMotivation"> | string
   order?: Prisma.IntFilter<"OptionMotivation"> | number
+  createdAt?: Prisma.DateTimeFilter<"OptionMotivation"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"OptionMotivation"> | Date | string
   student?: Prisma.StudentMotivationListRelationFilter
 }
 
@@ -207,6 +223,8 @@ export type OptionMotivationOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   label?: Prisma.SortOrder
   order?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
   student?: Prisma.StudentMotivationOrderByRelationAggregateInput
 }
 
@@ -217,6 +235,8 @@ export type OptionMotivationWhereUniqueInput = Prisma.AtLeast<{
   NOT?: Prisma.OptionMotivationWhereInput | Prisma.OptionMotivationWhereInput[]
   label?: Prisma.StringFilter<"OptionMotivation"> | string
   order?: Prisma.IntFilter<"OptionMotivation"> | number
+  createdAt?: Prisma.DateTimeFilter<"OptionMotivation"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"OptionMotivation"> | Date | string
   student?: Prisma.StudentMotivationListRelationFilter
 }, "id">
 
@@ -224,6 +244,8 @@ export type OptionMotivationOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   label?: Prisma.SortOrder
   order?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
   _count?: Prisma.OptionMotivationCountOrderByAggregateInput
   _avg?: Prisma.OptionMotivationAvgOrderByAggregateInput
   _max?: Prisma.OptionMotivationMaxOrderByAggregateInput
@@ -238,12 +260,16 @@ export type OptionMotivationScalarWhereWithAggregatesInput = {
   id?: Prisma.StringWithAggregatesFilter<"OptionMotivation"> | string
   label?: Prisma.StringWithAggregatesFilter<"OptionMotivation"> | string
   order?: Prisma.IntWithAggregatesFilter<"OptionMotivation"> | number
+  createdAt?: Prisma.DateTimeWithAggregatesFilter<"OptionMotivation"> | Date | string
+  updatedAt?: Prisma.DateTimeWithAggregatesFilter<"OptionMotivation"> | Date | string
 }
 
 export type OptionMotivationCreateInput = {
   id?: string
   label: string
   order: number
+  createdAt?: Date | string
+  updatedAt?: Date | string
   student?: Prisma.StudentMotivationCreateNestedManyWithoutOptionInput
 }
 
@@ -251,6 +277,8 @@ export type OptionMotivationUncheckedCreateInput = {
   id?: string
   label: string
   order: number
+  createdAt?: Date | string
+  updatedAt?: Date | string
   student?: Prisma.StudentMotivationUncheckedCreateNestedManyWithoutOptionInput
 }
 
@@ -258,6 +286,8 @@ export type OptionMotivationUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   label?: Prisma.StringFieldUpdateOperationsInput | string
   order?: Prisma.IntFieldUpdateOperationsInput | number
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   student?: Prisma.StudentMotivationUpdateManyWithoutOptionNestedInput
 }
 
@@ -265,6 +295,8 @@ export type OptionMotivationUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   label?: Prisma.StringFieldUpdateOperationsInput | string
   order?: Prisma.IntFieldUpdateOperationsInput | number
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   student?: Prisma.StudentMotivationUncheckedUpdateManyWithoutOptionNestedInput
 }
 
@@ -272,24 +304,32 @@ export type OptionMotivationCreateManyInput = {
   id?: string
   label: string
   order: number
+  createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type OptionMotivationUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   label?: Prisma.StringFieldUpdateOperationsInput | string
   order?: Prisma.IntFieldUpdateOperationsInput | number
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type OptionMotivationUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   label?: Prisma.StringFieldUpdateOperationsInput | string
   order?: Prisma.IntFieldUpdateOperationsInput | number
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type OptionMotivationCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   label?: Prisma.SortOrder
   order?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
 }
 
 export type OptionMotivationAvgOrderByAggregateInput = {
@@ -300,12 +340,16 @@ export type OptionMotivationMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   label?: Prisma.SortOrder
   order?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
 }
 
 export type OptionMotivationMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   label?: Prisma.SortOrder
   order?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
 }
 
 export type OptionMotivationSumOrderByAggregateInput = {
@@ -337,12 +381,16 @@ export type OptionMotivationCreateWithoutStudentInput = {
   id?: string
   label: string
   order: number
+  createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type OptionMotivationUncheckedCreateWithoutStudentInput = {
   id?: string
   label: string
   order: number
+  createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type OptionMotivationCreateOrConnectWithoutStudentInput = {
@@ -365,12 +413,16 @@ export type OptionMotivationUpdateWithoutStudentInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   label?: Prisma.StringFieldUpdateOperationsInput | string
   order?: Prisma.IntFieldUpdateOperationsInput | number
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type OptionMotivationUncheckedUpdateWithoutStudentInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   label?: Prisma.StringFieldUpdateOperationsInput | string
   order?: Prisma.IntFieldUpdateOperationsInput | number
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 
@@ -408,6 +460,8 @@ export type OptionMotivationSelect<ExtArgs extends runtime.Types.Extensions.Inte
   id?: boolean
   label?: boolean
   order?: boolean
+  createdAt?: boolean
+  updatedAt?: boolean
   student?: boolean | Prisma.OptionMotivation$studentArgs<ExtArgs>
   _count?: boolean | Prisma.OptionMotivationCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["optionMotivation"]>
@@ -416,21 +470,27 @@ export type OptionMotivationSelectCreateManyAndReturn<ExtArgs extends runtime.Ty
   id?: boolean
   label?: boolean
   order?: boolean
+  createdAt?: boolean
+  updatedAt?: boolean
 }, ExtArgs["result"]["optionMotivation"]>
 
 export type OptionMotivationSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   label?: boolean
   order?: boolean
+  createdAt?: boolean
+  updatedAt?: boolean
 }, ExtArgs["result"]["optionMotivation"]>
 
 export type OptionMotivationSelectScalar = {
   id?: boolean
   label?: boolean
   order?: boolean
+  createdAt?: boolean
+  updatedAt?: boolean
 }
 
-export type OptionMotivationOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "label" | "order", ExtArgs["result"]["optionMotivation"]>
+export type OptionMotivationOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "label" | "order" | "createdAt" | "updatedAt", ExtArgs["result"]["optionMotivation"]>
 export type OptionMotivationInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   student?: boolean | Prisma.OptionMotivation$studentArgs<ExtArgs>
   _count?: boolean | Prisma.OptionMotivationCountOutputTypeDefaultArgs<ExtArgs>
@@ -447,6 +507,8 @@ export type $OptionMotivationPayload<ExtArgs extends runtime.Types.Extensions.In
     id: string
     label: string
     order: number
+    createdAt: Date
+    updatedAt: Date
   }, ExtArgs["result"]["optionMotivation"]>
   composites: {}
 }
@@ -874,6 +936,8 @@ export interface OptionMotivationFieldRefs {
   readonly id: Prisma.FieldRef<"OptionMotivation", 'String'>
   readonly label: Prisma.FieldRef<"OptionMotivation", 'String'>
   readonly order: Prisma.FieldRef<"OptionMotivation", 'Int'>
+  readonly createdAt: Prisma.FieldRef<"OptionMotivation", 'DateTime'>
+  readonly updatedAt: Prisma.FieldRef<"OptionMotivation", 'DateTime'>
 }
     
 

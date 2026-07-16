@@ -35,7 +35,6 @@ export async function createWave(waveData: CreateWaveInput): Promise<Wave> {
 
     return wave;
   } catch (error) {
-    console.log(error);
     if (error instanceof ConflictError) {
       throw error;
     }

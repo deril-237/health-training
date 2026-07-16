@@ -1,11 +1,11 @@
 import { useId } from "react";
 
-export type TypeInputProps = React.ComponentProps<"input"> & {
+export type TypeInputProps = React.ComponentProps<"textarea"> & {
   label?: string;
   error?: string;
 };
 
-export default function Input({
+export default function TextArea({
   label,
   error,
   readOnly,
@@ -28,7 +28,7 @@ export default function Input({
         </label>
       )}
 
-      <input
+      <textarea
         id={inputId}
         ref={ref}
         readOnly={readOnly}
@@ -37,7 +37,7 @@ export default function Input({
         aria-invalid={!!error}
         aria-describedby={error ? `${inputId}-error` : undefined}
         className={`
-          input w-full rounded-lg border bg-base-100 text-base-content shadow-none
+          textarea w-full rounded-lg border bg-base-100 text-base-content shadow-none
           border-base-300 transition-all duration-200 ease-out
           placeholder:text-base-content/40
           focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20
