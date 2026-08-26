@@ -14,7 +14,11 @@ const prisma = new PrismaClient({
 });
 
 async function main() {
-  await addTrainingAndProgram(prisma);
+  const isProduction = process.env.NODE_ENV === "production";
+
+  if (!isProduction) {
+    await addTrainingAndProgram(prisma);
+  }
 
   await addQuestions(prisma);
 

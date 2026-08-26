@@ -23,8 +23,13 @@ humanitaire`,
     },
   ];
 
-  await prisma.optionMotivation.createMany({
-    data: itemsOptions,
-    skipDuplicates: true,
-  });
+  await prisma.$transaction(
+    itemsOptions.map((item) =>
+      prisma.optionMotivation.upsert({
+        create: item,
+        where: { order: item.order },
+        update: {},
+      }),
+    ),
+  );
 }

@@ -6,6 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "db:seed": "tsx prisma/seed.ts",
+    "db:migrate": "prisma migrate deploy",
+    "db:migrate:dev": "prisma migrate dev",
+    "db:generate": "prisma generate",
     "generate-better-schema": "npx  auth@latest generate --config",
     "lint": "eslint",
     "email:dev": "email dev --dir ./src/emails"
