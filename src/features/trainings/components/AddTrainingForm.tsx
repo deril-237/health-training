@@ -40,6 +40,12 @@ export const AddTrainingForm: FunctionComponent<AddTrainingFormProps> = () => {
         return;
       }
 
+      if (!result.data) {
+        applyActionErrors(
+          { global: "Erreur pend", fieldErrors: {}, code: "CONFLICT" },
+          setError,
+        );
+      }
       reset();
     },
     (error) => {

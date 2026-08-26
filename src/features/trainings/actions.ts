@@ -51,8 +51,8 @@ export const createTrainingAction = authActionClient
     const result = await trainingService.createTraining(data);
 
     revalidatePath("/admin/training");
+    revalidatePath("/trainings");
     redirect(`/admin/trainings/${result.id}`);
-    return result;
   });
 
 export const updateTrainingAction = authActionClient
@@ -62,6 +62,10 @@ export const updateTrainingAction = authActionClient
     const [trainingId] = bindArgsClientInputs;
     const training = await trainingService.updateTraining(trainingId, data);
 
+    revalidatePath(`/admin/trainings/${training.id}`);
+    revalidatePath("/admin/training-programs/[trainingProgramId]", "page");
+
+    revalidatePath("/trainings/[trainingId]", "page");
     return training;
   });
 
@@ -83,7 +87,10 @@ export const addProgramInTraining = authActionClient
       parsedInput,
     );
 
-    revalidatePath(`/admin/trainings/${trainingId}`, "page");
+    // revalidatePath(`/admin/trainings/${trainingId}`);
+    // revalidatePath("/admin/training-programs/[trainingProgramId]", "page");
+
+    revalidatePath("/trainings/[trainingId]", "page");
 
     return trainingProgram;
     // redirect(`/admin/training-programs/${trainingProgram.id}`);
