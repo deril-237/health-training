@@ -54,7 +54,7 @@ coverage/
 !.vscode/settings.json
 !.vscode/tasks.json
 !.vscode/launch.json
-
+.VSCodeCounter/
 .idea/
 
 # OS files

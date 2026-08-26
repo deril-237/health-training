@@ -1,8 +1,0 @@
-GET  http://localhost:3000/api/modules/cmq42ak65000247qg1ql1ije
-Content-Type: application/json
-
-
-{
-  "name": "test 2"
- 
-}
