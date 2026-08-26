@@ -388,7 +388,11 @@ export const ModelName = {
   Training: 'Training',
   TrainingProgram: 'TrainingProgram',
   Module: 'Module',
-  Wave: 'Wave'
+  Wave: 'Wave',
+  Student: 'Student',
+  OptionMotivation: 'OptionMotivation',
+  StudentMotivation: 'StudentMotivation',
+  Inscription: 'Inscription'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -404,7 +408,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "program" | "training" | "trainingProgram" | "module" | "wave"
+    modelProps: "program" | "training" | "trainingProgram" | "module" | "wave" | "student" | "optionMotivation" | "studentMotivation" | "inscription"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -778,6 +782,302 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    Student: {
+      payload: Prisma.$StudentPayload<ExtArgs>
+      fields: Prisma.StudentFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.StudentFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$StudentPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.StudentFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$StudentPayload>
+        }
+        findFirst: {
+          args: Prisma.StudentFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$StudentPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.StudentFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$StudentPayload>
+        }
+        findMany: {
+          args: Prisma.StudentFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$StudentPayload>[]
+        }
+        create: {
+          args: Prisma.StudentCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$StudentPayload>
+        }
+        createMany: {
+          args: Prisma.StudentCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.StudentCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$StudentPayload>[]
+        }
+        delete: {
+          args: Prisma.StudentDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$StudentPayload>
+        }
+        update: {
+          args: Prisma.StudentUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$StudentPayload>
+        }
+        deleteMany: {
+          args: Prisma.StudentDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.StudentUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.StudentUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$StudentPayload>[]
+        }
+        upsert: {
+          args: Prisma.StudentUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$StudentPayload>
+        }
+        aggregate: {
+          args: Prisma.StudentAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateStudent>
+        }
+        groupBy: {
+          args: Prisma.StudentGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.StudentGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.StudentCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.StudentCountAggregateOutputType> | number
+        }
+      }
+    }
+    OptionMotivation: {
+      payload: Prisma.$OptionMotivationPayload<ExtArgs>
+      fields: Prisma.OptionMotivationFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.OptionMotivationFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$OptionMotivationPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.OptionMotivationFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$OptionMotivationPayload>
+        }
+        findFirst: {
+          args: Prisma.OptionMotivationFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$OptionMotivationPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.OptionMotivationFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$OptionMotivationPayload>
+        }
+        findMany: {
+          args: Prisma.OptionMotivationFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$OptionMotivationPayload>[]
+        }
+        create: {
+          args: Prisma.OptionMotivationCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$OptionMotivationPayload>
+        }
+        createMany: {
+          args: Prisma.OptionMotivationCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.OptionMotivationCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$OptionMotivationPayload>[]
+        }
+        delete: {
+          args: Prisma.OptionMotivationDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$OptionMotivationPayload>
+        }
+        update: {
+          args: Prisma.OptionMotivationUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$OptionMotivationPayload>
+        }
+        deleteMany: {
+          args: Prisma.OptionMotivationDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.OptionMotivationUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.OptionMotivationUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$OptionMotivationPayload>[]
+        }
+        upsert: {
+          args: Prisma.OptionMotivationUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$OptionMotivationPayload>
+        }
+        aggregate: {
+          args: Prisma.OptionMotivationAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateOptionMotivation>
+        }
+        groupBy: {
+          args: Prisma.OptionMotivationGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.OptionMotivationGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.OptionMotivationCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.OptionMotivationCountAggregateOutputType> | number
+        }
+      }
+    }
+    StudentMotivation: {
+      payload: Prisma.$StudentMotivationPayload<ExtArgs>
+      fields: Prisma.StudentMotivationFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.StudentMotivationFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$StudentMotivationPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.StudentMotivationFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$StudentMotivationPayload>
+        }
+        findFirst: {
+          args: Prisma.StudentMotivationFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$StudentMotivationPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.StudentMotivationFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$StudentMotivationPayload>
+        }
+        findMany: {
+          args: Prisma.StudentMotivationFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$StudentMotivationPayload>[]
+        }
+        create: {
+          args: Prisma.StudentMotivationCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$StudentMotivationPayload>
+        }
+        createMany: {
+          args: Prisma.StudentMotivationCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.StudentMotivationCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$StudentMotivationPayload>[]
+        }
+        delete: {
+          args: Prisma.StudentMotivationDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$StudentMotivationPayload>
+        }
+        update: {
+          args: Prisma.StudentMotivationUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$StudentMotivationPayload>
+        }
+        deleteMany: {
+          args: Prisma.StudentMotivationDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.StudentMotivationUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.StudentMotivationUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$StudentMotivationPayload>[]
+        }
+        upsert: {
+          args: Prisma.StudentMotivationUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$StudentMotivationPayload>
+        }
+        aggregate: {
+          args: Prisma.StudentMotivationAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateStudentMotivation>
+        }
+        groupBy: {
+          args: Prisma.StudentMotivationGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.StudentMotivationGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.StudentMotivationCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.StudentMotivationCountAggregateOutputType> | number
+        }
+      }
+    }
+    Inscription: {
+      payload: Prisma.$InscriptionPayload<ExtArgs>
+      fields: Prisma.InscriptionFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.InscriptionFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$InscriptionPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.InscriptionFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$InscriptionPayload>
+        }
+        findFirst: {
+          args: Prisma.InscriptionFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$InscriptionPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.InscriptionFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$InscriptionPayload>
+        }
+        findMany: {
+          args: Prisma.InscriptionFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$InscriptionPayload>[]
+        }
+        create: {
+          args: Prisma.InscriptionCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$InscriptionPayload>
+        }
+        createMany: {
+          args: Prisma.InscriptionCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.InscriptionCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$InscriptionPayload>[]
+        }
+        delete: {
+          args: Prisma.InscriptionDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$InscriptionPayload>
+        }
+        update: {
+          args: Prisma.InscriptionUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$InscriptionPayload>
+        }
+        deleteMany: {
+          args: Prisma.InscriptionDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.InscriptionUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.InscriptionUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$InscriptionPayload>[]
+        }
+        upsert: {
+          args: Prisma.InscriptionUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$InscriptionPayload>
+        }
+        aggregate: {
+          args: Prisma.InscriptionAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateInscription>
+        }
+        groupBy: {
+          args: Prisma.InscriptionGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.InscriptionGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.InscriptionCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.InscriptionCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -880,6 +1180,62 @@ export const WaveScalarFieldEnum = {
 export type WaveScalarFieldEnum = (typeof WaveScalarFieldEnum)[keyof typeof WaveScalarFieldEnum]
 
 
+export const StudentScalarFieldEnum = {
+  id: 'id',
+  numCNIPassport: 'numCNIPassport',
+  name: 'name',
+  secondName: 'secondName',
+  birthDate: 'birthDate',
+  birthPlace: 'birthPlace',
+  residence: 'residence',
+  email: 'email',
+  diplomaUrl: 'diplomaUrl',
+  cniPhotoUrl: 'cniPhotoUrl',
+  photoUrl: 'photoUrl',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type StudentScalarFieldEnum = (typeof StudentScalarFieldEnum)[keyof typeof StudentScalarFieldEnum]
+
+
+export const OptionMotivationScalarFieldEnum = {
+  id: 'id',
+  label: 'label',
+  order: 'order',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type OptionMotivationScalarFieldEnum = (typeof OptionMotivationScalarFieldEnum)[keyof typeof OptionMotivationScalarFieldEnum]
+
+
+export const StudentMotivationScalarFieldEnum = {
+  id: 'id',
+  studentId: 'studentId',
+  optionId: 'optionId',
+  textResponse: 'textResponse',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type StudentMotivationScalarFieldEnum = (typeof StudentMotivationScalarFieldEnum)[keyof typeof StudentMotivationScalarFieldEnum]
+
+
+export const InscriptionScalarFieldEnum = {
+  id: 'id',
+  studentId: 'studentId',
+  waveId: 'waveId',
+  status: 'status',
+  modality: 'modality',
+  reasonRejected: 'reasonRejected',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type InscriptionScalarFieldEnum = (typeof InscriptionScalarFieldEnum)[keyof typeof InscriptionScalarFieldEnum]
+
+
 export const SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -977,6 +1333,34 @@ export type EnumWaveStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$Prism
  * Reference to a field of type 'WaveStatus[]'
  */
 export type ListEnumWaveStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'WaveStatus[]'>
+    
+
+
+/**
+ * Reference to a field of type 'InscriptionStatus'
+ */
+export type EnumInscriptionStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'InscriptionStatus'>
+    
+
+
+/**
+ * Reference to a field of type 'InscriptionStatus[]'
+ */
+export type ListEnumInscriptionStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'InscriptionStatus[]'>
+    
+
+
+/**
+ * Reference to a field of type 'ModalityOption'
+ */
+export type EnumModalityOptionFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ModalityOption'>
+    
+
+
+/**
+ * Reference to a field of type 'ModalityOption[]'
+ */
+export type ListEnumModalityOptionFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ModalityOption[]'>
     
 
 /**
@@ -1094,6 +1478,10 @@ export type GlobalOmitConfig = {
   trainingProgram?: Prisma.TrainingProgramOmit
   module?: Prisma.ModuleOmit
   wave?: Prisma.WaveOmit
+  student?: Prisma.StudentOmit
+  optionMotivation?: Prisma.OptionMotivationOmit
+  studentMotivation?: Prisma.StudentMotivationOmit
+  inscription?: Prisma.InscriptionOmit
 }
 
 /* Types for Logging */

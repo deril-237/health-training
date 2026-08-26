@@ -45,7 +45,6 @@ type AnyStep<TForm extends FieldValues = any> = Step<
   any
 >;
 
-// ✅ un seul generic, correctement utilisé
 type StepsResult<TSteps extends readonly AnyStep<any>[]> =
   TSteps[number] extends Step<any, any, infer D, infer E>
     ? StepResult<D, E>
@@ -53,7 +52,7 @@ type StepsResult<TSteps extends readonly AnyStep<any>[]> =
 
 export type MultiStepFormReturn<
   FormData extends FieldValues,
-  TSteps extends readonly AnyStep<FormData>[] = readonly AnyStep<FormData>[], // ✅ readonly ajouté
+  TSteps extends readonly AnyStep<FormData>[] = readonly AnyStep<FormData>[],
 > = UseFormReturn<FormData> & {
   currentStepPending: boolean;
   currentStep: number;

@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { AppError } from "@/lib/errors/appError";
 
 export const numericInput = (required: string, invalid: string) =>
   z.preprocess(
@@ -93,3 +94,17 @@ export const optionalDateInput = (
       })
       .optional(),
   );
+
+export function parseOrThrow<T>(
+  schema: z.ZodType<T>,
+  value: unknown,
+  createError: () => AppError,
+): T {
+  const result = schema.safeParse(value);
+
+  if (!result.success) {
+    throw createError();
+  }
+
+  return result.data;
+}

@@ -14,6 +14,7 @@ import zod from "zod";
 import { PaginationParams } from "@/lib/pagination";
 import { action } from "@/lib/callAction";
 import { NotFoundError, ValidationError } from "@/lib/errors/appError";
+import { parseOrThrow } from "@/lib/zodRules";
 
 export const createWaveAction = action(
   async (formData: FormData | CreateWaveInput) => {
@@ -34,12 +35,11 @@ export const createWaveAction = action(
 
 export const updateWaveAction = action(
   async (waveId: Identifier, formData: FormData | UpdateWaveInput) => {
-    const waveIdParsedResult = zod.cuid2().safeParse(waveId);
-    if (!waveIdParsedResult.success) {
-      throw new NotFoundError(`Il existe aucun vague avec cette identifiant`);
-    }
-
-    const waveIdParsed = waveIdParsedResult.data;
+    const waveIdParsed = parseOrThrow(
+      zod.cuid2(),
+      waveId,
+      () => new NotFoundError(`Il existe aucun vague avec cette identifiant`),
+    );
 
     const waveData = await validateData({
       formData,
@@ -67,6 +67,20 @@ export const getWaveList = action(
   },
 );
 
-export const lockWaveCourseAction = action(waveService.lockWaveCourse);
+export const lockWaveCourseAction = action(async (waveId: string) => {
+  const waveIdParsed = parseOrThrow(
+    zod.cuid2(),
+    waveId,
+    () => new NotFoundError(`Il existe aucun vague avec cette identifiant`),
+  );
+  return await waveService.lockWaveCourse(waveIdParsed);
+});
 
-export const unlockWaveCourseAction = action(waveService.unlockWaveCourse);
+export const unlockWaveCourseAction = action(async (waveId: string) => {
+  const waveIdParsed = parseOrThrow(
+    zod.cuid2(),
+    waveId,
+    () => new NotFoundError(`Il existe aucun vague avec cette identifiant`),
+  );
+  return await waveService.unlockWaveCourse(waveIdParsed);
+});

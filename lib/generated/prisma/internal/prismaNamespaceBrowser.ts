@@ -55,7 +55,11 @@ export const ModelName = {
   Training: 'Training',
   TrainingProgram: 'TrainingProgram',
   Module: 'Module',
-  Wave: 'Wave'
+  Wave: 'Wave',
+  Student: 'Student',
+  OptionMotivation: 'OptionMotivation',
+  StudentMotivation: 'StudentMotivation',
+  Inscription: 'Inscription'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -135,6 +139,62 @@ export const WaveScalarFieldEnum = {
 } as const
 
 export type WaveScalarFieldEnum = (typeof WaveScalarFieldEnum)[keyof typeof WaveScalarFieldEnum]
+
+
+export const StudentScalarFieldEnum = {
+  id: 'id',
+  numCNIPassport: 'numCNIPassport',
+  name: 'name',
+  secondName: 'secondName',
+  birthDate: 'birthDate',
+  birthPlace: 'birthPlace',
+  residence: 'residence',
+  email: 'email',
+  diplomaUrl: 'diplomaUrl',
+  cniPhotoUrl: 'cniPhotoUrl',
+  photoUrl: 'photoUrl',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type StudentScalarFieldEnum = (typeof StudentScalarFieldEnum)[keyof typeof StudentScalarFieldEnum]
+
+
+export const OptionMotivationScalarFieldEnum = {
+  id: 'id',
+  label: 'label',
+  order: 'order',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type OptionMotivationScalarFieldEnum = (typeof OptionMotivationScalarFieldEnum)[keyof typeof OptionMotivationScalarFieldEnum]
+
+
+export const StudentMotivationScalarFieldEnum = {
+  id: 'id',
+  studentId: 'studentId',
+  optionId: 'optionId',
+  textResponse: 'textResponse',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type StudentMotivationScalarFieldEnum = (typeof StudentMotivationScalarFieldEnum)[keyof typeof StudentMotivationScalarFieldEnum]
+
+
+export const InscriptionScalarFieldEnum = {
+  id: 'id',
+  studentId: 'studentId',
+  waveId: 'waveId',
+  status: 'status',
+  modality: 'modality',
+  reasonRejected: 'reasonRejected',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type InscriptionScalarFieldEnum = (typeof InscriptionScalarFieldEnum)[keyof typeof InscriptionScalarFieldEnum]
 
 
 export const SortOrder = {

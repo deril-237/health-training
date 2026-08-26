@@ -8,7 +8,7 @@ export const prismaErrorcode = {
 };
 
 type ErrorMap<Key extends string = string> = {
-  unique?: Partial<Record<Key, string>>;
+  unique?: Partial<Record<Key, string>> & { global?: string };
   foreignKey?: Partial<Record<Key, string>>;
   notExist?: string;
   internalError?: string;
@@ -19,9 +19,11 @@ export function handlePrismaError<T extends string = string>(
   errorsMessage: ErrorMap<T>,
 ): never {
   if (error instanceof Prisma.PrismaClientKnownRequestError) {
-    console.log(error);
     if (error.code === prismaErrorcode.unique) {
-      throw new ConflictError(errorsMessage.unique ?? {});
+      throw new ConflictError(
+        { ...errorsMessage.unique, global: undefined },
+        errorsMessage.unique?.global,
+      );
     }
 
     if (error.code === prismaErrorcode.notExist) {

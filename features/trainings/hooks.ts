@@ -1,7 +1,6 @@
 "use client";
 
 import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
-import { action } from "@/lib/callAction";
 import { FIRST_PAGE, type PaginationParams } from "@/lib/pagination";
 import { getTrainingListAction, getTrainingProgramList } from "./actions";
 import type { Identifier } from "@/interfaces/entities";
